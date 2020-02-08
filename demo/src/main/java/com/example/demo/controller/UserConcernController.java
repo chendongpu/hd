@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.auth0.jwt.JWT;
+import com.example.demo.handler.BizException;
+import com.example.demo.handler.ResultBody;
 import com.example.demo.jwt.CheckToken;
 import com.example.demo.model.User;
 import com.example.demo.model.UserAddress;
@@ -36,50 +38,48 @@ public class UserConcernController {
     //添加用户关注
     @CheckToken
     @PostMapping("/create_user_concern")
-    public Object createUserAddress( @RequestParam Integer concernid) {
+    public ResultBody createUserAddress( @RequestParam Integer concernid) {
         JSONObject jsonObject = new JSONObject();
         Optional<User> concernOption=userService.findUserById(Long.parseLong(concernid+""));
-
-        if (concernOption.isPresent()) {
-            String token = request.getHeader("token");
-            // 获取 token 中的 user id
-            log.info("token:{}",token);
-            String userId= JWT.decode(token).getClaim("id").asString();
-            Long userid =Long.parseLong(userId);
-
-            UserConcern userConcern=new UserConcern();
-            userConcern.setUserid(userid);
-            userConcern.setConcernid(Long.parseLong(concernid+""));
-            log.info("userConcern{}",userConcern);
-            return userConcernService.createUserConcern(userConcern);
-        } else {
-            jsonObject.put("message", "该关注用户不存在");
-            return jsonObject;
+        if(!concernOption.isPresent()){
+            throw new BizException("-1","该关注用户不存在");
         }
+
+        String token = request.getHeader("token");
+        // 获取 token 中的 user id
+        log.info("token:{}",token);
+        String userId= JWT.decode(token).getClaim("id").asString();
+        Long userid =Long.parseLong(userId);
+
+        UserConcern userConcern=new UserConcern();
+        userConcern.setUserid(userid);
+        userConcern.setConcernid(Long.parseLong(concernid+""));
+        log.info("userConcern{}",userConcern);
+        UserConcern saved= userConcernService.createUserConcern(userConcern);
+        return ResultBody.success(saved) ;
     }
 
     //取消用户关注
     @CheckToken
     @PostMapping("/remove_user_concern")
-    public Object removeUserConcern(@RequestParam Integer concernid){
+    public ResultBody removeUserConcern(@RequestParam Integer concernid){
         String token = request.getHeader("token");
         // 获取 token 中的 user id
         log.info("token:{}",token);
         String userId= JWT.decode(token).getClaim("id").asString();
         Long userid =Long.parseLong(userId);
         Optional<UserConcern> userConcernOption=userConcernService.findOneUserConcern(userid,Long.parseLong(concernid+""));
-        if(userConcernOption.isPresent()){
-            userConcernService.removeUserConcern(userConcernOption.get());
-            return "取消关注成功";
-        }else{
-            return "你还没有关注";
+        if(!userConcernOption.isPresent()){
+            throw new BizException("-1","你还没有关注");
         }
+        userConcernService.removeUserConcern(userConcernOption.get());
+        return ResultBody.success("取消关注成功") ;
     }
 
     //关注列表
     @CheckToken
     @PostMapping(value = "/all_user_concern",params = "limit")
-    public Object allUserConcern(Integer limit,Integer page){
+    public ResultBody allUserConcern(Integer limit,Integer page){
         if (null == page || 0 == page){
             page = 1;
         }
@@ -95,13 +95,14 @@ public class UserConcernController {
         JSONObject jsonObject = new JSONObject();
         Page<User> pageUser = userConcernService.allUserConcern(userConcern,pageable);
         jsonObject.put("list", pageUser.toList());
-        return jsonObject;
+
+        return ResultBody.success(jsonObject);
     }
 
     //粉丝列表
     @CheckToken
     @PostMapping(value = "/all_fans",params = "limit")
-    public Object allFans(Integer limit,Integer page){
+    public ResultBody allFans(Integer limit,Integer page){
         if (null == page || 0 == page){
             page = 1;
         }
@@ -117,7 +118,7 @@ public class UserConcernController {
         JSONObject jsonObject = new JSONObject();
         Page<User> pageUser = userConcernService.allFans(userConcern,pageable);
         jsonObject.put("list", pageUser.toList());
-        return jsonObject;
+        return ResultBody.success(jsonObject);
     }
 
 
