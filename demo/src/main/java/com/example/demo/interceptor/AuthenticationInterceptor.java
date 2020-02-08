@@ -56,13 +56,20 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 log.info("token:{}",token);
 
                 String userId;
+                String expireStr;
                 try {
                     userId = JWT.decode(token).getClaim("id").asString();
+                    expireStr = JWT.decode(token).getClaim("expire").asString();
                 } catch (JWTDecodeException j) {
                     throw new RuntimeException("访问异常！");
                 }
 
                 log.info("userId:{}",userId);
+                log.info("expireStr:{}",expireStr);
+
+                if(System.currentTimeMillis()>Long.parseLong(expireStr)){
+                    throw new RuntimeException("token已过期！");
+                }
                 User user = (userService.findUserById(Long.parseLong(userId))).get();
                 if (user == null) {
                     throw new RuntimeException("用户不存在，请重新登录");

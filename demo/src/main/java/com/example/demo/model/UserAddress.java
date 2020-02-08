@@ -3,10 +3,14 @@ package com.example.demo.model;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@DynamicInsert
+@DynamicUpdate
 @Entity
 @Table(name="hd_user_address")
 @Builder
@@ -19,16 +23,16 @@ public class UserAddress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int userid;
+    private Long userid;
     private String realname;
     private String mobile;
     private String province;
     private String city;
     private String area;
     private String address;
-    private int isdefault;
+    private Integer isdefault;
     private String zipcode;
-    private int deleted;
+    private Integer deleted;
     private String street;
     private String lng;
     private String lat;

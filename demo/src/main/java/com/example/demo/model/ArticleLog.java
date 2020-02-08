@@ -21,8 +21,8 @@ public class ArticleLog {
     private Long id;
     private Long userid;
     private Long aid;
-    private int read;
-    private int like;
+    private Integer read;
+    private Integer like;
     @Column(updatable = false)
     @CreationTimestamp
     private Date createtime;

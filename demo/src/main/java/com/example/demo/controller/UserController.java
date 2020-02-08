@@ -13,10 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Slf4j
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -56,15 +57,15 @@ public class UserController {
 
     //注册
     @PostMapping("/register")
-    public Object register(  @RequestBody NewUserRequest newUser){
+    public Object register(  @Valid @RequestBody NewUserRequest newUser){
         JSONObject jsonObject = new JSONObject();
-        User userForBase = (userService.findByUsername(newUser.getUsername())).get();
-        if (userForBase == null) {
-            log.info("Receive new User{}",newUser);
-            return userService.createUser(newUser.getUsername(),newUser.getPassword());
-        } else {
+        Optional<User> userOptional = userService.findByUsername(newUser.getUsername());
+        if (userOptional.isPresent()) {
             jsonObject.put("message", "用户名已存在");
             return jsonObject;
+        } else {
+            log.info("Receive new User{}",newUser);
+            return userService.createUser(newUser.getUsername(),newUser.getPassword());
         }
 
     }

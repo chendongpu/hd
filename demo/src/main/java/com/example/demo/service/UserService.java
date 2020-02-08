@@ -37,12 +37,13 @@ public class UserService {
     }
 
     public User createUser(String username, String password) {
-        User user = User.builder().username(username).password(MD5Utils.stringToMD5(password)).build();
-
+        User user = User.builder().username(username).password(MD5Utils.stringToMD5(password)).content("").build();
         log.info("User:{}",user);
         User saved = userRepository.save(user);
         log.info("New User:{}", saved);
         return saved;
     }
+
+
 
 }
