@@ -26,9 +26,9 @@ public class Doctor {
     private String nickname;
     private String realname;
     private String mobile;
-    private int isblack;
+    private Integer isblack;
     private String username;
-    private int mobileverify;
+    private Integer mobileverify;
     private String password;
     private String content;
     @Column(updatable = false)
@@ -37,7 +37,7 @@ public class Doctor {
     private String birthyear;
     private String birthmonth;
     private String birthday;
-    private int gender=0;
+    private Integer gender;
     private String avatar;
     private String province;
     private String city;

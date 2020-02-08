@@ -116,3 +116,12 @@ CREATE TABLE `hd_video` (
   `createtime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='视频';
+
+DROP TABLE IF EXISTS `hd_user_concern`;
+CREATE TABLE `hd_user_concern` (
+  `userid` int(11) NOT NULL DEFAULT '0' COMMENT '用户id',
+  `concernid` int(11) NOT NULL DEFAULT '0' COMMENT '被关注用户id',
+  PRIMARY KEY (`userid`,`concernid`),
+  KEY `idx_userid` (`userid`),
+  KEY `idx_concernid` (`concernid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户关注表'

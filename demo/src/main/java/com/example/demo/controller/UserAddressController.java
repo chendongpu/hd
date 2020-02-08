@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.auth0.jwt.JWT;
 import com.example.demo.controller.request.NewUserAddressRequest;
 import com.example.demo.jwt.CheckToken;
-import com.example.demo.model.User;
 import com.example.demo.model.UserAddress;
 import com.example.demo.service.UserAddressService;
 import lombok.extern.slf4j.Slf4j;
