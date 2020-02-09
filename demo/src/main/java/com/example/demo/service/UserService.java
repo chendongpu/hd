@@ -8,9 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Optional;
 
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.exact;
@@ -42,6 +39,10 @@ public class UserService {
         User saved = userRepository.save(user);
         log.info("New User:{}", saved);
         return saved;
+    }
+
+    public void updateUser(User newUser){
+        userRepository.save(newUser);
     }
 
 
