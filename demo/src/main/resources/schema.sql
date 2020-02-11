@@ -116,9 +116,10 @@ CREATE TABLE `hd_user_video` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `userid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
   `title` varchar(255) NOT NULL DEFAULT '' COMMENT '标题',
-  `video_img` varchar(255) NOT NULL DEFAULT '' COMMENT '视频图片',
-  `video_url` varchar(255) NOT NULL DEFAULT '' COMMENT '视频地址',
+  `img` varchar(255) NOT NULL DEFAULT '' COMMENT '视频图片',
+  `video` varchar(255) NOT NULL DEFAULT '' COMMENT '视频地址',
   `createtime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `state` int(1) NOT NULL DEFAULT '0' COMMENT '是否显示',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='视频';
 

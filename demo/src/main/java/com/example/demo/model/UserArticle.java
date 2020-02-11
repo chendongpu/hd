@@ -34,5 +34,5 @@ public class UserArticle {
     private Long readnum;
     private Long likenum;
     private String keyword;
-    private String state;
+    private Integer state;
 }

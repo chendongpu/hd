@@ -52,6 +52,16 @@ insert into hd_user_concern (userid,concernid) values (8,1);
 insert into hd_user_concern (userid,concernid) values (9,1);
 insert into hd_user_concern (userid,concernid) values (10,1);
 
-insert into hd_user_video (userid,title, video_img, video_url,createtime) values (1,'app分享视频', 'http://','http://',now());
+insert into hd_user_video (userid,title, img, video,createtime) values (1,'apple分享视频', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now());
+insert into hd_user_video (userid,title, img, video,createtime) values (1,'野生动物', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now());
+insert into hd_user_video (userid,title, img, video,createtime) values (1,'野生动物01', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now());
+insert into hd_user_video (userid,title, img, video,createtime) values (1,'野生动物02', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now());
+insert into hd_user_video (userid,title, img, video,createtime) values (1,'野生动物03', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now());
+insert into hd_user_video (userid,title, img, video,createtime) values (1,'野生动物04', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now());
+insert into hd_user_video (userid,title, img, video,createtime) values (1,'野生动物05', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now());
+insert into hd_user_video (userid,title, img, video,createtime) values (1,'野生动物06', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now());
+insert into hd_user_video (userid,title, img, video,createtime) values (1,'野生动物07', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now());
+insert into hd_user_video (userid,title, img, video,createtime) values (1,'野生动物08', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now());
+insert into hd_user_video (userid,title, img, video,createtime) values (1,'野生动物09', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now());
 
 

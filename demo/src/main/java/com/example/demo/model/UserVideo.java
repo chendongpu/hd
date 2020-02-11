@@ -3,12 +3,16 @@ package com.example.demo.model;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@DynamicInsert
+@DynamicUpdate
 @Entity
-@Table(name="hd_doctor")
+@Table(name="hd_user_video")
 @Builder
 @Data
 @ToString(callSuper = true)
@@ -20,13 +24,14 @@ public class UserVideo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long doctorid;
+    private Long userid;
     private String title;
-    private String video_img;
-    private String video_url;
+    private String img;
+    private String video;
     @Column(updatable = false)
     @CreationTimestamp
     private Date createtime;
+    private Integer state;
 
 
 }
