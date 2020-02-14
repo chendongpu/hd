@@ -6,8 +6,11 @@ import com.example.demo.controller.request.NewUserVideoRequest;
 import com.example.demo.handler.BizException;
 import com.example.demo.handler.ResultBody;
 import com.example.demo.jwt.CheckToken;
+import com.example.demo.model.User;
 import com.example.demo.model.UserVideo;
+import com.example.demo.service.UserService;
 import com.example.demo.service.UserVideoService;
+import com.fasterxml.jackson.annotation.JsonFilter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,6 +32,9 @@ public class UserVideoController {
     private UserVideoService userVideoService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     HttpServletRequest request;
 
     //添加视频
@@ -48,8 +54,8 @@ public class UserVideoController {
         log.info("token:{}",token);
         String userId= JWT.decode(token).getClaim("id").asString();
         Long userid =Long.parseLong(userId);
-        newUserVideo.setUserid(userid);
-
+        Optional<User> userOptional=userService.findUserById(userid);
+        newUserVideo.setUser(userOptional.get());
         newUserVideo.setTitle(newUserVideoReq.getTitle());
         newUserVideo.setImg(newUserVideoReq.getImg());
         newUserVideo.setVideo(newUserVideoReq.getVideo());

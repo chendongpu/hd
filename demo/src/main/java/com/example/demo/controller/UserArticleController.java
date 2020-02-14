@@ -6,8 +6,10 @@ import com.example.demo.controller.request.NewUserArticleRequest;
 import com.example.demo.handler.BizException;
 import com.example.demo.handler.ResultBody;
 import com.example.demo.jwt.CheckToken;
+import com.example.demo.model.User;
 import com.example.demo.model.UserArticle;
 import com.example.demo.service.UserArticleService;
+import com.example.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,6 +31,9 @@ public class UserArticleController {
     private UserArticleService userArticleService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     HttpServletRequest request;
 
     //添加文章
@@ -48,8 +53,9 @@ public class UserArticleController {
         log.info("token:{}",token);
         String userId= JWT.decode(token).getClaim("id").asString();
         Long userid =Long.parseLong(userId);
-        newUserArticle.setUserid(userid);
-
+        //newUserArticle.setUserid(userid);
+        Optional<User> userOptional=userService.findUserById(userid);
+        newUserArticle.setUser(userOptional.get());
         newUserArticle.setTitle(newUserArticleReq.getTitle());
         newUserArticle.setImg(newUserArticleReq.getImg());
         newUserArticle.setContent(newUserArticleReq.getContent());

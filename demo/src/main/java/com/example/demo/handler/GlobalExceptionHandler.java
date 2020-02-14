@@ -49,7 +49,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = RuntimeException.class)
     @ResponseBody
     public ResultBody exceptionHandler(HttpServletRequest req, RuntimeException e){
-        logger.error("发生不允许访问异常！");
+        logger.error("发生不允许访问异常！",e);
         return ResultBody.error(CommonEnum.NOT_ALLOW);
     }
 

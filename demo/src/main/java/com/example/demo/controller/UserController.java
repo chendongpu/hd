@@ -8,16 +8,13 @@ import com.example.demo.jwt.CheckToken;
 import com.example.demo.jwt.JwtUtil;
 import com.example.demo.jwt.LoginToken;
 import com.example.demo.model.User;
-import com.example.demo.model.UserAddress;
 import com.example.demo.service.UserService;
 import com.alibaba.fastjson.JSONObject;
-import com.example.demo.util.FileUtil;
 import com.example.demo.util.MD5Utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.swing.text.html.Option;
@@ -42,6 +39,7 @@ public class UserController {
         JSONObject jsonObject = new JSONObject();
         Optional<User> userOptional = (userService.findByUsername(user.getUsername()));
         log.info("userOptional:{}",userOptional);
+        log.info("user:{}",user);
 
         if (!userOptional.isPresent()) {
             throw new BizException("-1","登录失败,用户不存在");

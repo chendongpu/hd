@@ -13,8 +13,6 @@ public class NewUserVideoRequest {
 
     private Long id;
 
-    private Long userid;
-
     @NotEmpty
     private String title;
 

@@ -6,8 +6,10 @@ import com.example.demo.controller.request.NewUserAddressRequest;
 import com.example.demo.handler.BizException;
 import com.example.demo.handler.ResultBody;
 import com.example.demo.jwt.CheckToken;
+import com.example.demo.model.User;
 import com.example.demo.model.UserAddress;
 import com.example.demo.service.UserAddressService;
+import com.example.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,6 +31,9 @@ public class UserAddressController {
     private UserAddressService userAddressService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     HttpServletRequest request;
 
     //添加用户地址
@@ -48,7 +53,9 @@ public class UserAddressController {
         log.info("token:{}",token);
         String userId= JWT.decode(token).getClaim("id").asString();
         Long userid =Long.parseLong(userId);
-        newUserAddress.setUserid(userid);
+        //newUserAddress.setUserid(userid);
+        Optional<User> userOptional=userService.findUserById(userid);
+        newUserAddress.setUser(userOptional.get());
         newUserAddress.setRealname(newUserAddressReq.getRealname());
         newUserAddress.setMobile(newUserAddressReq.getMobile());
         newUserAddress.setProvince(newUserAddressReq.getProvince());

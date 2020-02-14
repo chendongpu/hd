@@ -1,6 +1,9 @@
 package com.example.demo.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
@@ -8,7 +11,9 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @DynamicInsert
@@ -31,6 +36,9 @@ public class User {
     private Integer isblack;
     private String username;
     private Integer mobileverify;
+
+    //隐藏输出但是不隐藏输入
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     private String content;
     @Column(updatable = false)
@@ -46,8 +54,11 @@ public class User {
     private String area;
 
 
-
-
+    private Integer isdoctor;
+    private String department;
+    private String hospital;
+    private String level;
+    private String goodat;
 
 
 

@@ -1,32 +1,34 @@
 package com.example.demo.controller.request;
 
+import com.example.demo.model.UserTestQuestion;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.Set;
 
 @Getter
 @Setter
 @ToString
-public class NewUserArticleRequest {
+public class NewUserTestRequest {
 
     private Long id;
+
+    private Long userid;
 
     @NotEmpty
     private String title;
 
-    @NotEmpty
-    private String img;
 
     @NotEmpty
     private String content;
 
-    @NotEmpty
-    private String author;
 
-    @NotEmpty
-    private String keyword;
+    private Set<UserTestQuestion> userTestQuestions;
+
+
+
 
 
 }

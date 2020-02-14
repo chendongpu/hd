@@ -13,8 +13,6 @@ public class NewUserAddressRequest {
 
     private Long id;
 
-    private Long userid;
-
     @NotEmpty
     private String realname;
 

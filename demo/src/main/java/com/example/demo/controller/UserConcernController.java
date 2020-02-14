@@ -38,7 +38,7 @@ public class UserConcernController {
     //添加用户关注
     @CheckToken
     @PostMapping("/create_user_concern")
-    public ResultBody createUserAddress( @RequestParam Integer concernid) {
+    public ResultBody createUserConcern( @RequestParam Integer concernid) {
         JSONObject jsonObject = new JSONObject();
         Optional<User> concernOption=userService.findUserById(Long.parseLong(concernid+""));
         if(!concernOption.isPresent()){
