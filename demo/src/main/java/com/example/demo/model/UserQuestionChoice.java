@@ -20,11 +20,7 @@ public class UserQuestionChoice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(insertable = false,updatable = false)
     private Long questionid;
     private String choice;
 
-    @ManyToOne(targetEntity = UserQuestion.class)
-    @JoinColumn(name="questionid",referencedColumnName = "id")
-    private UserQuestion question;
 }

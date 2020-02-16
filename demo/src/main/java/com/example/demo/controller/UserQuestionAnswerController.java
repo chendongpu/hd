@@ -108,7 +108,6 @@ public class UserQuestionAnswerController {
         uqr.setType(uq.getType());
         uqr.setScore(uq.getScore());
         uqr.setCreatetime(uq.getCreatetime());
-        uqr.setUser(uq.getUser());
         log.info("id:{}",uq.getId());
         log.info("list:{}",userQuestionChoiceService.findByQuestionid(uq.getId()));
         List<UserQuestionChoice> list= userQuestionChoiceService.findByQuestionid(uq.getId());

@@ -54,8 +54,7 @@ public class UserVideoController {
         log.info("token:{}",token);
         String userId= JWT.decode(token).getClaim("id").asString();
         Long userid =Long.parseLong(userId);
-        Optional<User> userOptional=userService.findUserById(userid);
-        newUserVideo.setUser(userOptional.get());
+        newUserVideo.setUserid(userid);
         newUserVideo.setTitle(newUserVideoReq.getTitle());
         newUserVideo.setImg(newUserVideoReq.getImg());
         newUserVideo.setVideo(newUserVideoReq.getVideo());

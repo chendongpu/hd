@@ -25,7 +25,6 @@ public class UserTest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(insertable = false,updatable = false)
     private Long userid;
     private String title;
     private String content;
@@ -33,9 +32,5 @@ public class UserTest {
     @CreationTimestamp
     private Date createtime;
     private Integer state;
-
-    @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name="userid",referencedColumnName = "id")
-    private User user;
 
 }

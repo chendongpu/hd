@@ -53,9 +53,7 @@ public class UserArticleController {
         log.info("token:{}",token);
         String userId= JWT.decode(token).getClaim("id").asString();
         Long userid =Long.parseLong(userId);
-        //newUserArticle.setUserid(userid);
-        Optional<User> userOptional=userService.findUserById(userid);
-        newUserArticle.setUser(userOptional.get());
+        newUserArticle.setUserid(userid);
         newUserArticle.setTitle(newUserArticleReq.getTitle());
         newUserArticle.setImg(newUserArticleReq.getImg());
         newUserArticle.setContent(newUserArticleReq.getContent());

@@ -62,8 +62,7 @@ public class UserQuestionController {
         log.info("token:{}",token);
         String userId= JWT.decode(token).getClaim("id").asString();
         Long userid =Long.parseLong(userId);
-        Optional<User> userOptional=userService.findUserById(userid);
-        newUserQuestion.setUser(userOptional.get());
+        newUserQuestion.setUserid(userid);
         newUserQuestion.setTitle(newUserQuestionReq.getTitle());
         newUserQuestion.setType(newUserQuestionReq.getType());
         newUserQuestion.setScore(newUserQuestionReq.getScore());
@@ -72,7 +71,7 @@ public class UserQuestionController {
         log.info("UserQuestion{}",newUserQuestion);
         List<UserQuestionChoice> choices = newUserQuestionReq.getUserQuestionChoices();
         for(UserQuestionChoice choice:choices){
-            choice.setQuestion(saved);
+            choice.setQuestionid(saved.getId());
         }
         log.info("choices{}",choices);
         userQuestionChoiceService.createBatchUserQuestionChoice(choices);
@@ -88,7 +87,6 @@ public class UserQuestionController {
         uqr.setType(uq.getType());
         uqr.setScore(uq.getScore());
         uqr.setCreatetime(uq.getCreatetime());
-        uqr.setUser(uq.getUser());
         List<UserQuestionChoice> list= userQuestionChoiceService.findByQuestionid(uq.getId());
         uqr.setUserQuestionChoices(list);
         return uqr;

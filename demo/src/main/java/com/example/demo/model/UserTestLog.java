@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
 
+import com.example.demo.util.StringJsonSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
@@ -12,32 +14,27 @@ import java.util.Date;
 @DynamicInsert
 @DynamicUpdate
 @Entity
-@Table(name="hd_user_address")
+@Table(name="hd_user_test_log")
 @Builder
 @Data
 @ToString(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserAddress {
+public class UserTestLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(insertable = false,updatable = false)
     private Long userid;
-    private String realname;
-    private String mobile;
-    private String province;
-    private String city;
-    private String area;
-    private String address;
-    private Integer isdefault;
-    private String zipcode;
-    private Integer deleted;
-    private String street;
-    private String lng;
-    private String lat;
+    private Long testid;
+    private String title;
+    private String content;
     @Column(updatable = false)
     @CreationTimestamp
     private Date createtime;
+    @JsonSerialize(using = StringJsonSerializer.class)
+    private String result;
+
 
 }

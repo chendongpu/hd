@@ -12,30 +12,22 @@ import java.util.Date;
 @DynamicInsert
 @DynamicUpdate
 @Entity
-@Table(name="hd_user_address")
+@Table(name="hd_user_msg")
 @Builder
 @Data
 @ToString(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserAddress {
+public class UserMsg {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long userid;
-    private String realname;
-    private String mobile;
-    private String province;
-    private String city;
-    private String area;
-    private String address;
-    private Integer isdefault;
-    private String zipcode;
-    private Integer deleted;
-    private String street;
-    private String lng;
-    private String lat;
+    private String msg;
+    private Integer type;
+    private Long otherid;
+    private Integer isread;
     @Column(updatable = false)
     @CreationTimestamp
     private Date createtime;

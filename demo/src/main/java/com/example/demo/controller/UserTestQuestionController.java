@@ -11,10 +11,6 @@ import com.example.demo.model.*;
 import com.example.demo.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -117,7 +113,6 @@ public class UserTestQuestionController {
         uqr.setType(uq.getType());
         uqr.setScore(uq.getScore());
         uqr.setCreatetime(uq.getCreatetime());
-        uqr.setUser(uq.getUser());
         log.info("id:{}",uq.getId());
         log.info("list:{}",userQuestionChoiceService.findByQuestionid(uq.getId()));
         List<UserQuestionChoice> list= userQuestionChoiceService.findByQuestionid(uq.getId());
@@ -125,7 +120,7 @@ public class UserTestQuestionController {
         return uqr;
     }
 
-    //测评问题列表
+    //查询测评问题列表
     @CheckToken
     @PostMapping(value = "/one_user_test_question",params = "testid")
     public ResultBody oneUserTestQuestion(@NotNull  Long testid){

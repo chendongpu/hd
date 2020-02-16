@@ -1,8 +1,6 @@
 package com.example.demo.controller.response;
 
-import com.example.demo.model.User;
-import com.example.demo.model.UserQuestion;
-import com.example.demo.model.UserQuestionChoice;
+
 import com.example.demo.model.UserTest;
 import lombok.Getter;
 import lombok.Setter;

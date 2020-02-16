@@ -53,9 +53,7 @@ public class UserAddressController {
         log.info("token:{}",token);
         String userId= JWT.decode(token).getClaim("id").asString();
         Long userid =Long.parseLong(userId);
-        //newUserAddress.setUserid(userid);
-        Optional<User> userOptional=userService.findUserById(userid);
-        newUserAddress.setUser(userOptional.get());
+        newUserAddress.setUserid(userid);
         newUserAddress.setRealname(newUserAddressReq.getRealname());
         newUserAddress.setMobile(newUserAddressReq.getMobile());
         newUserAddress.setProvince(newUserAddressReq.getProvince());

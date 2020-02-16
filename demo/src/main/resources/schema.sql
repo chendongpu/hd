@@ -162,7 +162,49 @@ CREATE TABLE `hd_user_question_answer` (
   `questionid` INT(11) NOT NULL DEFAULT '0' COMMENT '问题id',
   `choiceid` INT(11) NOT NULL DEFAULT '0'  COMMENT '选项id',
     PRIMARY KEY (`questionid`,`choiceid`)
-) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='问题答案'
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='问题答案';
+
+DROP TABLE IF EXISTS `hd_user_test_log`;
+CREATE TABLE `hd_user_test_log` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `userid` INT(11) NOT NULL DEFAULT '0' COMMENT '用户id',
+    `testid` INT(11) NOT NULL DEFAULT '0' COMMENT '测评id',
+    `title` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '测评标题',
+    `content` LONGTEXT COMMENT '测评说明',
+    `createtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+     `result` LONGTEXT COMMENT '测评结果',
+     PRIMARY KEY (`id`),
+     KEY `idx_title` (`title`),
+     KEY `idx_content` (`content`(10))
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='测评记录';
+
+DROP TABLE IF EXISTS `hd_point_task`;
+CREATE TABLE `hd_point_task` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL DEFAULT '' COMMENT '任务名称',
+  `type` int(1) NOT NULL DEFAULT '0' COMMENT '0 签到 1开直播 2分享',
+  `point` int(11) NOT NULL DEFAULT '0' COMMENT '奖励积分数量',
+  `createtime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `state` int(1) NOT NULL DEFAULT '0' COMMENT '是否审核通过',
+  PRIMARY KEY (`id`),
+  KEY `idx_title` (`title`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='任务';
+
+DROP TABLE IF EXISTS `hd_user_msg`;
+CREATE TABLE `hd_user_msg` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` int(11) NOT NULL DEFAULT '0' COMMENT '用户id',
+  `msg` varchar(20) NOT NULL DEFAULT '' COMMENT '消息',
+  `type` tinyint(1) NOT NULL DEFAULT '0' COMMENT '类型 0系统通知 1评论 2 点赞',
+  `otherid` int(11) NOT NULL DEFAULT '0' COMMENT '评论或者点赞用户id',
+  `isread` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否已读',
+  `createtime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_userid` (`userid`),
+  KEY `idx_isread` (`isread`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8  COMMENT='用户消息记录';
+
+
 
 
 

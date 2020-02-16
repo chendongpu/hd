@@ -8,7 +8,9 @@ import com.example.demo.handler.ResultBody;
 import com.example.demo.jwt.CheckToken;
 import com.example.demo.model.User;
 import com.example.demo.model.UserTest;
+import com.example.demo.model.UserTestLog;
 import com.example.demo.service.UserService;
+import com.example.demo.service.UserTestLogService;
 import com.example.demo.service.UserTestQuestionService;
 import com.example.demo.service.UserTestService;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +32,6 @@ public class UserTestController {
 
     @Autowired
     private UserTestService userTestService;
-
 
     @Autowired
     private UserService userService;
@@ -58,8 +59,7 @@ public class UserTestController {
         log.info("token:{}",token);
         String userId= JWT.decode(token).getClaim("id").asString();
         Long userid =Long.parseLong(userId);
-        Optional<User> userOptional=userService.findUserById(userid);
-        newUserTest.setUser(userOptional.get());
+        newUserTest.setUserid(userid);
         newUserTest.setTitle(newUserTestReq.getTitle());
         newUserTest.setContent(newUserTestReq.getContent());
 
@@ -106,7 +106,7 @@ public class UserTestController {
 
     //查询测评
     @CheckToken
-    @PostMapping(value = "/all_user_test",params = "limit")
+    @PostMapping(value = "/all_user_test_log",params = "limit")
     public ResultBody allUserTest(Integer limit,Integer page){
 
         if (null == page || 0 == page){
