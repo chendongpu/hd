@@ -203,3 +203,26 @@ insert into hd_user_msg (userid,msg, type,otherid,createtime) values (1,'密码�
 insert into hd_user_msg (userid,msg, type,otherid,createtime) values (1,'密码修改成功',0,0,now());
 insert into hd_user_msg (userid,msg, type,otherid,createtime) values (1,'密码修改成功',0,0,now());
 insert into hd_user_msg (userid,msg, type,otherid,createtime) values (1,'密码修改成功',0,0,now());
+
+
+insert into `hd_user_task_log` (`userid`, `taskid`, `title`, `point`, `createtime`) values('1','1','马上签到，领取签到奖励10','10',now());
+insert into `hd_user_task_log` (`userid`, `taskid`, `title`, `point`, `createtime`) values('1','1','马上签到，领取签到奖励10','10',now());
+insert into `hd_user_task_log` (`userid`, `taskid`, `title`, `point`, `createtime`) values('1','1','马上签到，领取签到奖励10','10',now());
+insert into `hd_user_task_log` (`userid`, `taskid`, `title`, `point`, `createtime`) values('1','1','马上签到，领取签到奖励10','10',now());
+insert into `hd_user_task_log` (`userid`, `taskid`, `title`, `point`, `createtime`) values('1','1','马上签到，领取签到奖励10','10',now());
+insert into `hd_user_task_log` (`userid`, `taskid`, `title`, `point`, `createtime`) values('1','1','马上签到，领取签到奖励10','10',now());
+insert into `hd_user_task_log` (`userid`, `taskid`, `title`, `point`, `createtime`) values('1','1','马上签到，领取签到奖励10','10',now());
+insert into `hd_user_task_log` (`userid`, `taskid`, `title`, `point`, `createtime`) values('1','1','马上签到，领取签到奖励10','10',now());
+insert into `hd_user_task_log` (`userid`, `taskid`, `title`, `point`, `createtime`) values('1','1','马上签到，领取签到奖励10','10',now());
+insert into `hd_user_task_log` (`userid`, `taskid`, `title`, `point`, `createtime`) values('1','1','马上签到，领取签到奖励10','10',now());
+
+insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100092,now());
+insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100093,now());
+insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100094,now());
+insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100098,now());
+insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100099,now());
+insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100098,now());
+insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100097,now());
+insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100096,now());
+insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100095,now());
+insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100094,now());
