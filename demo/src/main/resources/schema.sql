@@ -204,6 +204,18 @@ CREATE TABLE `hd_user_msg` (
   KEY `idx_isread` (`isread`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8  COMMENT='用户消息记录';
 
+DROP TABLE IF EXISTS `hd_user_task_log`;
+CREATE TABLE `hd_user_task_log` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `userid` INT(11) NOT NULL DEFAULT '0' COMMENT '用户id',
+  `taskid` INT(11) NOT NULL DEFAULT '0' COMMENT '任务id',
+  `title` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '任务名称',
+  `point` INT(11) NOT NULL DEFAULT '0' COMMENT '奖励积分数量',
+  `createtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_userid` (`userid`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='用户完成任务记录';
+
 
 
 
