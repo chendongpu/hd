@@ -226,3 +226,14 @@ insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100
 insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100096,now());
 insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100095,now());
 insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100094,now());
+
+
+insert  into `hd_user_article_comment`(`userid`,`articleid`,`comment`,`createtime`,`state`) values (1,1,'文章写的很棒！',now(),0);
+insert  into `hd_user_article_comment`(`userid`,`articleid`,`comment`,`createtime`,`state`) values (1,1,'文章写的很棒！',now(),0);
+insert  into `hd_user_article_comment`(`userid`,`articleid`,`comment`,`createtime`,`state`) values (1,1,'文章写的很棒！',now(),0);
+insert  into `hd_user_article_comment`(`userid`,`articleid`,`comment`,`createtime`,`state`) values (1,1,'文章写的很棒！',now(),0);
+insert  into `hd_user_article_comment`(`userid`,`articleid`,`comment`,`createtime`,`state`) values (1,1,'文章写的很棒！',now(),0);
+insert  into `hd_user_article_comment`(`userid`,`articleid`,`comment`,`createtime`,`state`) values (1,1,'文章写的很棒！',now(),0);
+insert  into `hd_user_article_comment`(`userid`,`articleid`,`comment`,`createtime`,`state`) values (1,1,'文章写的很棒！',now(),0);
+insert  into `hd_user_article_comment`(`userid`,`articleid`,`comment`,`createtime`,`state`) values (1,1,'文章写的很棒！',now(),0);
+insert  into `hd_user_article_comment`(`userid`,`articleid`,`comment`,`createtime`,`state`) values (1,1,'文章写的很棒！',now(),0);

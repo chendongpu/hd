@@ -240,3 +240,36 @@ CREATE TABLE `hd_user_cash_log` (
   PRIMARY KEY (`id`),
   KEY `idx_userid` (`userid`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='用户提现记录';
+
+
+
+DROP TABLE IF EXISTS `hd_user_article_comment`;
+CREATE TABLE `hd_user_article_comment` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `userid` INT(11) NOT NULL DEFAULT '0' COMMENT '用户id',
+  `articleid` INT(11) NOT NULL DEFAULT '0' COMMENT '文章id',
+  `comment` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '评论',
+  `createtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `state` int(1) NOT NULL DEFAULT '0' COMMENT '是否审核通过',
+  PRIMARY KEY (`id`),
+  KEY `idx_userid` (`userid`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='用户文章评论';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
