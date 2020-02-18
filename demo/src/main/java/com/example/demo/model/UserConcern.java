@@ -27,3 +27,11 @@ public class UserConcern implements Serializable {
     private Long concernid;
 
 }
+
+class UserConcernId  implements Serializable {
+
+
+    private Long userid;
+    private Long concernid;
+
+}

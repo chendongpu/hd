@@ -31,3 +31,14 @@ public class UserTestQuestion implements Serializable {
     private Long questionid;
 
 }
+
+class UserTestQuestionId implements Serializable {
+
+
+    private Long testid;
+
+
+    private Long questionid;
+
+}
+

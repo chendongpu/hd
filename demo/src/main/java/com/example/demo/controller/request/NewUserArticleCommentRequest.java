@@ -20,5 +20,9 @@ public class NewUserArticleCommentRequest {
     @NotEmpty
     private String comment;
 
+    private Integer isreply;
+
+    private Long pid;
+
 
 }

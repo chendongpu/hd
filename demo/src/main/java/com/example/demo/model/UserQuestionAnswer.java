@@ -6,6 +6,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @DynamicInsert
 @DynamicUpdate
@@ -23,6 +24,16 @@ public class UserQuestionAnswer {
     private Long questionid;
 
     @Id
+    private Long choiceid;
+
+}
+
+class UserQuestionAnswerId implements Serializable {
+
+
+    private Long questionid;
+
+
     private Long choiceid;
 
 }

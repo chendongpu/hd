@@ -237,3 +237,11 @@ insert  into `hd_user_article_comment`(`userid`,`articleid`,`comment`,`createtim
 insert  into `hd_user_article_comment`(`userid`,`articleid`,`comment`,`createtime`,`state`) values (1,1,'文章写的很棒！',now(),0);
 insert  into `hd_user_article_comment`(`userid`,`articleid`,`comment`,`createtime`,`state`) values (1,1,'文章写的很棒！',now(),0);
 insert  into `hd_user_article_comment`(`userid`,`articleid`,`comment`,`createtime`,`state`) values (1,1,'文章写的很棒！',now(),0);
+
+insert into hd_user_article_comment_like (userid,articleid,commentid) values (1,1,1);
+insert into hd_user_article_comment_like (userid,articleid,commentid) values (1,1,2);
+insert into hd_user_article_comment_like (userid,articleid,commentid) values (1,1,3);
+insert into hd_user_article_comment_like (userid,articleid,commentid) values (1,1,4);
+insert into hd_user_article_comment_like (userid,articleid,commentid) values (1,1,5);
+insert into hd_user_article_comment_like (userid,articleid,commentid) values (1,1,6);
+insert into hd_user_article_comment_like (userid,articleid,commentid) values (1,1,7);

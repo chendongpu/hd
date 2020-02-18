@@ -30,6 +30,10 @@ public class UserArticleComment implements Serializable {
 
     private String comment;
 
+    private Integer isreply;
+
+    private Long pid;
+
     @Column(updatable = false)
     @CreationTimestamp
     private Date createtime;

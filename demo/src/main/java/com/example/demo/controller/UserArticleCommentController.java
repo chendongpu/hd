@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.auth0.jwt.JWT;
+import com.example.demo.controller.packclass.PackUserArticleComment;
 import com.example.demo.controller.request.NewUserArticleCommentRequest;
 import com.example.demo.handler.BizException;
 import com.example.demo.handler.ResultBody;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -36,6 +39,7 @@ public class UserArticleCommentController {
     @Autowired
     HttpServletRequest request;
 
+    //{"articleid":1,"comment":"文章写的很棒！"}
     //添加任务文章评论
     @CheckToken
     @PostMapping(value = "/create_user_article_comment")
@@ -66,6 +70,47 @@ public class UserArticleCommentController {
     }
 
 
+    //{"articleid":1,"comment":"谢谢！","pid":10}
+    //添加任务文章评论
+    @CheckToken
+    @PostMapping(value = "/create_user_article_reply")
+    public ResultBody createUserArticleReply(@Valid @RequestBody NewUserArticleCommentRequest newUserArticleCommentRequest) {
+        Optional<UserArticle> userArticleOptional=userArticleService.findUserArticleById(newUserArticleCommentRequest.getArticleid());
+        if(!userArticleOptional.isPresent()){
+            throw new BizException("-1","文章不存在");
+        }
+
+        Optional<UserArticleComment> userArticleCommentOptional=userArticleCommentService.findUserArticleCommentById(newUserArticleCommentRequest.getPid());
+        if(!userArticleCommentOptional.isPresent()){
+            throw new BizException("-1","文章评论不存在");
+        }
+
+        UserArticle task=userArticleOptional.get();
+
+        String token = request.getHeader("token");
+        // 获取 token 中的 user id
+        log.info("token:{}",token);
+        String userId= JWT.decode(token).getClaim("id").asString();
+        Long userid =Long.parseLong(userId);
+        log.info("userid:{}",userid);
+        UserArticleComment newUserArticleComment=new UserArticleComment();
+
+        newUserArticleComment.setUserid(userid);
+
+        newUserArticleComment.setArticleid(newUserArticleCommentRequest.getArticleid());
+
+        newUserArticleComment.setComment(newUserArticleCommentRequest.getComment());
+
+        newUserArticleComment.setIsreply(1);
+
+        newUserArticleComment.setPid(newUserArticleCommentRequest.getPid());
+
+        UserArticleComment saved= userArticleCommentService.createUserArticleComment(newUserArticleComment);
+
+        return ResultBody.success(saved);
+    }
+
+
 
 
     //删除任务文章评论
@@ -74,11 +119,11 @@ public class UserArticleCommentController {
     public ResultBody removeUserArticleComment(@RequestParam  Long id) {
         Optional<UserArticleComment> userTaskOption=userArticleCommentService.findUserArticleCommentById(id);
         if(!userTaskOption.isPresent()){
-            throw new BizException("-1","任务文章评论不存在");
+            throw new BizException("-1","文章评论不存在");
         }
 
         userArticleCommentService.removeUserArticleComment(id);
-        return ResultBody.success("任务文章评论删除成功");
+        return ResultBody.success("文章评论删除成功");
     }
 
 
@@ -100,10 +145,31 @@ public class UserArticleCommentController {
         log.info("token:{}",token);
         String userId= JWT.decode(token).getClaim("id").asString();
         Long userid =Long.parseLong(userId);
-        UserArticleComment userArticleComment = UserArticleComment.builder().userid(userid).build();
+        UserArticleComment userArticleComment = UserArticleComment.builder().userid(userid).isreply(0).build();
         JSONObject jsonObject = new JSONObject();
         Page<UserArticleComment> pageTask = userArticleCommentService.allUserArticleComment(userArticleComment,pageable);
-        jsonObject.put("list", pageTask.toList());
+
+        List<UserArticleComment>  userArticleCommentList = pageTask.toList();
+
+        List<PackUserArticleComment> packUserArticleCommentList=new ArrayList<>();
+
+        for(UserArticleComment uac:userArticleCommentList){
+            PackUserArticleComment puac = new PackUserArticleComment();
+
+            puac.setUserArticleComment(uac);
+
+            List<UserArticleComment> replyList = new ArrayList<>();
+
+
+            replyList = userArticleCommentService.findByPid(uac.getId());
+
+
+            puac.setUserArticleReplyList(replyList);
+
+            packUserArticleCommentList.add(puac);
+
+        }
+        jsonObject.put("list", packUserArticleCommentList);
         return ResultBody.success(jsonObject);
 
     }

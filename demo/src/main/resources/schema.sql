@@ -248,6 +248,8 @@ CREATE TABLE `hd_user_article_comment` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `userid` INT(11) NOT NULL DEFAULT '0' COMMENT '用户id',
   `articleid` INT(11) NOT NULL DEFAULT '0' COMMENT '文章id',
+  `isreply` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否是回复',
+  `pid` INT(11) NOT NULL DEFAULT '0' COMMENT '回复评论id',
   `comment` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '评论',
   `createtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
   `state` int(1) NOT NULL DEFAULT '0' COMMENT '是否审核通过',
@@ -255,7 +257,16 @@ CREATE TABLE `hd_user_article_comment` (
   KEY `idx_userid` (`userid`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='用户文章评论';
 
-
+DROP TABLE IF EXISTS `hd_user_article_comment_like`;
+CREATE TABLE `hd_user_article_comment_like` (
+  `userid` INT(11) NOT NULL DEFAULT '0' COMMENT '用户id',
+  `articleid` INT(11) NOT NULL DEFAULT '0' COMMENT '文章id',
+  `commentid`  INT(11) NOT NULL DEFAULT '0' COMMENT '评论id',
+  PRIMARY KEY (`userid`,`articleid`,`commentid`),
+  KEY `idx_userid` (`userid`),
+  KEY `idx_articleid` (`articleid`),
+  KEY `idx_commentid` (`commentid`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='用户文章评论点赞';
 
 
 

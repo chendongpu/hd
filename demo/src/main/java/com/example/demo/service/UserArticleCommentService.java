@@ -31,6 +31,13 @@ public class UserArticleCommentService {
         return userArticleCommentList;
     }
 
+    public List<UserArticleComment> findByPid(Long pid){
+        ExampleMatcher matcher=ExampleMatcher.matching().withMatcher("pid",exact().ignoreCase());
+        List<UserArticleComment> userArticleCommentList =userArticleCommentRepository.findAll(Example.of(UserArticleComment.builder().pid(pid).build(),matcher));
+        log.info("userArticleCommentList Found:{}",userArticleCommentList);
+        return userArticleCommentList;
+    }
+
     public Optional<UserArticleComment> findUserArticleCommentById(Long id){
         Optional<UserArticleComment> userArticleComment =userArticleCommentRepository.findById(id);
         log.info("userArticleComment Found:{}",userArticleComment);
