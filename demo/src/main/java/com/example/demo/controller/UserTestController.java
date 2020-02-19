@@ -106,7 +106,7 @@ public class UserTestController {
 
     //查询测评
     @CheckToken
-    @PostMapping(value = "/all_user_test_log",params = "limit")
+    @PostMapping(value = "/all_user_test",params = "limit")
     public ResultBody allUserTest(Integer limit,Integer page){
 
         if (null == page || 0 == page){

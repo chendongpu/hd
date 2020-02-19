@@ -129,6 +129,20 @@ CREATE TABLE `hd_user_test` (
   KEY `idx_content` (`content`(10))
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='医生测评';
 
+
+DROP TABLE IF EXISTS `hd_user_test_report`;
+CREATE TABLE `hd_user_test_report` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `testid` INT(11) NOT NULL DEFAULT '0' COMMENT '评估id',
+  `score` INT(11) NOT NULL DEFAULT '0' COMMENT '分值',
+  `title` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '测评结果标题',
+  `content` LONGTEXT COMMENT '测评正文',
+  `createtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_title` (`title`),
+  KEY `idx_content` (`content`(10))
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='医生测评报告';
+
 DROP TABLE IF EXISTS `hd_user_test_question`;
 CREATE TABLE `hd_user_test_question` (
   `testid` INT(11) NOT NULL DEFAULT '0'  COMMENT '测评id',
