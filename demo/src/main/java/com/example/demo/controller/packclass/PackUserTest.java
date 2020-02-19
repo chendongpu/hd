@@ -13,16 +13,12 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class PackUserQuestion {
+public class PackUserTest {
 
-    private UserQuestion userQuestion;
+   List<PackUserQuestion> packUserQuestionList;
 
-    private List<UserQuestionChoice> userQuestionChoiceList;
+   List<UserTestReport> userTestReportList;
 
-    private List<UserQuestionAnswer> userQuestionAnswerList;
-
-    private boolean result;
-
-    private Long[] yourAnswer;
+   UserTestReport resultReport;
 
 }

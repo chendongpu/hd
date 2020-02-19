@@ -15,7 +15,7 @@ public class StringJsonSerializer extends JsonSerializer<String> {
     @Override
     public void serialize(String s, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
         if (s != null){
-            jsonGenerator.writeObject(JSONObject.parseArray(s));
+            jsonGenerator.writeObject(JSONObject.parseObject(s));
         }
     }
 }

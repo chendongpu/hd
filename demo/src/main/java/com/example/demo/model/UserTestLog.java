@@ -32,6 +32,9 @@ public class UserTestLog {
     @Column(updatable = false)
     @CreationTimestamp
     private Date createtime;
+
+    private Integer score;//测评得分
+
     @JsonSerialize(using = StringJsonSerializer.class)
     private String result;
 

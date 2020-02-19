@@ -186,6 +186,7 @@ CREATE TABLE `hd_user_test_log` (
     `title` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '测评标题',
     `content` LONGTEXT COMMENT '测评说明',
     `createtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+     `score` INT(11) NOT NULL DEFAULT '0' COMMENT '测评分数',
      `result` LONGTEXT COMMENT '测评结果',
      PRIMARY KEY (`id`),
      KEY `idx_title` (`title`),

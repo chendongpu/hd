@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.auth0.jwt.JWT;
 import com.example.demo.controller.packclass.PackUserQuestion;
+import com.example.demo.controller.packclass.PackUserTest;
 import com.example.demo.controller.request.NewUserTestLogRequest;
 import com.example.demo.controller.request.QuestionChoiceInput;
 import com.example.demo.handler.BizException;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.lang.reflect.Array;
 import java.util.*;
 
 @Slf4j
@@ -44,6 +46,9 @@ public class UserTestLogController {
     @Autowired
     private UserQuestionAnswerService userQuestionAnswerService;
 
+    @Autowired
+    private UserTestReportService userTestReportService;
+
 
     @Autowired
     private UserService userService;
@@ -52,7 +57,7 @@ public class UserTestLogController {
     HttpServletRequest request;
 
     //添加测评记录
-    //{"testid":1,"questionChoiceInputSet":[{"questionid":1,"choiceid":[2]},{"questionid":2,"choiceid",[3,4]},{"questionid":3,"choiceid",[6]}]}
+    //{"testid":1,"questionChoiceInputSet":[{"questionid":1,"choiceid":[2]},{"questionid":2,"choiceid":[3,4]},{"questionid":3,"choiceid":[6]}]}
     @CheckToken
     @PostMapping("/create_user_test_log")
     public ResultBody createUserTestLog( @Valid @RequestBody NewUserTestLogRequest newUserTestLogReq) {
@@ -77,12 +82,53 @@ public class UserTestLogController {
 
         List<PackUserQuestion> userQuestionList =this.generateResult(questionChoiceInputSet);
 
+        Integer score=0;
 
-        String result = JSONObject.toJSONString(userQuestionList, SerializerFeature.DisableCircularReferenceDetect);
+
+
+        for(PackUserQuestion puq :userQuestionList){
+            if(puq.isResult()){
+                score+=puq.getUserQuestion().getScore();
+            }
+        }
+
+        newUserTestLog.setScore(score);
+
+        List<UserTestReport> userTestReportList = userTestReportService.findByTestid(userTest.getId());
+
+        Integer[] array =new Integer[userTestReportList.size()];
+
+        int i=0;
+        for(UserTestReport userTestReport:userTestReportList){
+            array[i]=userTestReport.getScore();
+            i++;
+        }
+
+        Integer targetNumber = this.getTargetNumber(array,score);
+
+
+        PackUserTest put = new PackUserTest();
+
+        put.setPackUserQuestionList(userQuestionList);
+
+        UserTestReport resultReport =new UserTestReport();
+
+        for(UserTestReport userTestReport:userTestReportList){
+            if(targetNumber == userTestReport.getScore()){
+                resultReport=userTestReport;
+            }
+        }
+
+        put.setResultReport(resultReport);
+
+        put.setUserTestReportList(userTestReportList);
+
+        String result = JSONObject.toJSONString(put, SerializerFeature.DisableCircularReferenceDetect);
 
         newUserTestLog.setResult(result);
 
         UserTestLog saved= userTestLogService.createUserTestLog(newUserTestLog);
+
         return ResultBody.success(saved);
     }
 
@@ -105,12 +151,15 @@ public class UserTestLogController {
 
             UserQuestion userQuestion = userQuestionOptional.get();
 
+            puq.setYourAnswer(choiceid);
+
             boolean result = this.checkQuestion(questionid,choiceid);
 
             puq.setUserQuestion(userQuestion);
 
             List<UserQuestionChoice> userQuestionChoiceList = userQuestionChoiceService.findByQuestionid(questionid);
             List<UserQuestionAnswer> userQuestionAnswerList = userQuestionAnswerService.findByQuestionid(questionid);
+
 
             puq.setUserQuestionChoiceList(userQuestionChoiceList);
 
@@ -142,6 +191,20 @@ public class UserTestLogController {
         } else {
             return false;
         }
+    }
+
+    //查找数组中与给定的数字最接近的那个值
+    private  Integer getTargetNumber(Integer[] array,Integer number){
+        int index = Math.abs(number-array[0]);
+        int result = array[0];
+        for (int i : array) {
+            int abs = Math.abs(number-i);
+            if(abs <= index){
+                index = abs;
+                result = i;
+            }
+        }
+        return result;
     }
 
 
