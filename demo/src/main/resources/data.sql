@@ -1,5 +1,3 @@
-
-
 insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('儿科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
 insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('妇产科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
 insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('内科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
@@ -31,7 +29,16 @@ insert into hd_user (username, password, createtime,content) values ('pineapple'
 insert into hd_user (username, password, createtime,content) values ('cherry', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
 
 
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生','wang', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,'内科','人民医院','主任医师','擅长内科');
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生1','wang1', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科');
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生2','wang2', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,8,'人民医院','主任医师','擅长外科');
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生3','wang3', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科');
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生4','wang4', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,1,'人民医院','主任医师','擅长儿科');
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生5','wang5', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科');
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生6','wang6', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科');
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生7','wang7', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科');
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生8','wang8', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科');
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生9','wang9', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科');
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生10','wang10', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科');
 
 
 insert into hd_user_address (userid, realname,mobile,province,city,area,address, createtime) values (1,'陈东谱', 18329123270,'湖北省','武穴市','余川镇','龟山村3组47号', now());

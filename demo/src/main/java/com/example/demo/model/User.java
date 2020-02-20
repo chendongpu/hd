@@ -55,7 +55,7 @@ public class User {
 
 
     private Integer isdoctor;
-    private String department;
+    private Long department;
     private String hospital;
     private String level;
     private String goodat;

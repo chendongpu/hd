@@ -32,7 +32,7 @@ CREATE TABLE `hd_user` (
   `city` varchar(255) NOT NULL DEFAULT '' COMMENT '市',
   `area` varchar(255) NOT NULL DEFAULT '' COMMENT '区',
   `isdoctor` tinyint(3) NOT NULL DEFAULT '0' COMMENT '是否为医生',
-  `department` varchar(255) NOT NULL DEFAULT '' COMMENT '科室',
+  `department` int(11) NOT NULL DEFAULT '0' COMMENT '科室',
   `hospital` varchar(255) NOT NULL DEFAULT '' COMMENT '医院',
   `level` varchar(255) NOT NULL DEFAULT '' COMMENT '级别',
   `goodat` varchar(255) NOT NULL DEFAULT '' COMMENT '擅长',

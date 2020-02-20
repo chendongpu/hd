@@ -118,8 +118,8 @@ public class DoctorDepartmentController {
 
         DoctorDepartment doctorDepartment = DoctorDepartment.builder().build();
         JSONObject jsonObject = new JSONObject();
-        Page<DoctorDepartment> pageAddress = doctorDepartmentService.allDoctorDepartment(doctorDepartment,pageable);
-        jsonObject.put("list", pageAddress.toList());
+        Page<DoctorDepartment> pagedd= doctorDepartmentService.allDoctorDepartment(doctorDepartment,pageable);
+        jsonObject.put("list", pagedd.toList());
         return ResultBody.success(jsonObject);
 
     }
