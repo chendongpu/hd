@@ -1,6 +1,16 @@
 USE `haiduo`;
 
 
+DROP TABLE IF EXISTS `hd_doctor_department`;
+CREATE TABLE `hd_doctor_department` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL DEFAULT '' COMMENT '科室名字',
+  `img` varchar(255) NOT NULL DEFAULT '' COMMENT '科室图片',
+  `createtime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='医生科室';
+
+
 DROP TABLE IF EXISTS `hd_user`;
 CREATE TABLE `hd_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -29,6 +39,7 @@ CREATE TABLE `hd_user` (
   PRIMARY KEY (`id`),
   KEY `idx_mobile` (`mobile`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户';
+
 
 
 DROP TABLE IF EXISTS `hd_user_address`;

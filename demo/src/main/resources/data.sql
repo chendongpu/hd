@@ -1,5 +1,23 @@
 
 
+insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('儿科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
+insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('妇产科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
+insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('内科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
+insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('中医科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
+insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('骨科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
+insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('消化内科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
+insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('男科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
+insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('外科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
+insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('耳鼻喉科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
+insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('心理科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
+insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('眼科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
+insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('营养科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
+insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('神经内科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
+insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('肿瘤内科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
+insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('口腔科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
+insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('心内科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
+
+
 insert into hd_user (username, password,avatar, createtime,content) values ('apple', 'e10adc3949ba59abbe56e057f20f883e','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg', now(),'');
 insert into hd_user (username, password, createtime,content) values ('pear', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
 insert into hd_user (username, password, createtime,content) values ('banana', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
