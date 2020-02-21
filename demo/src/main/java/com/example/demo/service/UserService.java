@@ -118,8 +118,6 @@ public class UserService {
             }
         };
 
-       List<User> list =  userRepository.findAll(specification);
-
         return userRepository.findAll(specification,pageable);
     }
 

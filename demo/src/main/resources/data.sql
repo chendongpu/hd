@@ -29,17 +29,29 @@ insert into hd_user (username, password, createtime,content) values ('pineapple'
 insert into hd_user (username, password, createtime,content) values ('cherry', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
 
 
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生1','wang1', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科');
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生2','wang2', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,8,'人民医院','主任医师','擅长外科');
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生3','wang3', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科');
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生4','wang4', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,1,'人民医院','主任医师','擅长儿科');
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生5','wang5', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科');
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生6','wang6', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科');
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生7','wang7', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科');
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生8','wang8', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科');
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生9','wang9', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科');
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat) values ('王医生10','wang10', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科');
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生1','wang1', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',2000,10);
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生2','wang2', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,8,'人民医院','主任医师','擅长外科',3000,15);
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生3','wang3', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',1500,12);
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生4','wang4', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,1,'人民医院','主任医师','擅长儿科',2000,10);
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生5','wang5', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',2000,10);
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生6','wang6', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',1500,12);
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生7','wang7', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',1800,15);
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生8','wang8', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',2400,18);
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生9','wang9', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',2500,15);
+insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生10','wang10', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',1600,12);
 
+
+insert  into `hd_treatment_order`(`orderid`,`userid`,`doctorid`,`money`,`duration`,`createtime`,`state`) values ('1000001556899032',1,12,2000,10,now(),0);
+insert  into `hd_treatment_order`(`orderid`,`userid`,`doctorid`,`money`,`duration`,`createtime`,`state`) values ('1000001814621575',1,12,2000,10,now(),0);
+insert  into `hd_treatment_order`(`orderid`,`userid`,`doctorid`,`money`,`duration`,`createtime`,`state`) values ('1000000419839389',1,12,2000,10,now(),0);
+insert  into `hd_treatment_order`(`orderid`,`userid`,`doctorid`,`money`,`duration`,`createtime`,`state`) values ('1000001001799851',1,12,2000,10,now(),0);
+insert  into `hd_treatment_order`(`orderid`,`userid`,`doctorid`,`money`,`duration`,`createtime`,`state`) values ('1000000146524839',1,12,2000,10,now(),0);
+insert  into `hd_treatment_order`(`orderid`,`userid`,`doctorid`,`money`,`duration`,`createtime`,`state`) values ('1000001473789764',1,12,2000,10,now(),0);
+insert  into `hd_treatment_order`(`orderid`,`userid`,`doctorid`,`money`,`duration`,`createtime`,`state`) values ('1000000556433802',1,12,2000,10,now(),0);
+insert  into `hd_treatment_order`(`orderid`,`userid`,`doctorid`,`money`,`duration`,`createtime`,`state`) values ('1000000613496243',1,12,2000,10,now(),0);
+insert  into `hd_treatment_order`(`orderid`,`userid`,`doctorid`,`money`,`duration`,`createtime`,`state`) values ('1000001491945635',1,12,2000,10,now(),0);
+insert  into `hd_treatment_order`(`orderid`,`userid`,`doctorid`,`money`,`duration`,`createtime`,`state`) values ('1000000274037818',1,12,2000,10,now(),0);
+insert  into `hd_treatment_order`(`orderid`,`userid`,`doctorid`,`money`,`duration`,`createtime`,`state`) values ('1000001772560398',1,12,2000,10,now(),0);
 
 insert into hd_user_address (userid, realname,mobile,province,city,area,address, createtime) values (1,'陈东谱', 18329123270,'湖北省','武穴市','余川镇','龟山村3组47号', now());
 insert into hd_user_address (userid, realname,mobile,province,city,area,address, createtime) values (1,'陈东谱', 15057190640,'湖北省','武穴市','余川镇','龟山村3组47号', now());
@@ -54,15 +66,15 @@ insert into hd_user_address (userid, realname,mobile,province,city,area,address,
 insert into hd_user_address (userid, realname,mobile,province,city,area,address, createtime) values (1,'陈东谱', 15057190649,'湖北省','武穴市','余川镇','龟山村3组47号', now());
 
 insert into hd_user_article (userid,title, img, content,createtime,readnum,likenum) values (1,'武汉,加油', 'http://','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),1,1);
-insert into hd_user_article (userid,title, img, content,createtime,author,keyword) values (1,'武汉,加油01', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉');
-insert into hd_user_article (userid,title, img, content,createtime,author,keyword) values (1,'武汉,加油02', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉');
-insert into hd_user_article (userid,title, img, content,createtime,author,keyword) values (1,'武汉,加油03', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉');
-insert into hd_user_article (userid,title, img, content,createtime,author,keyword) values (1,'武汉,加油04', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉');
-insert into hd_user_article (userid,title, img, content,createtime,author,keyword) values (1,'武汉,加油05', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉');
-insert into hd_user_article (userid,title, img, content,createtime,author,keyword) values (1,'武汉,加油06', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉');
-insert into hd_user_article (userid,title, img, content,createtime,author,keyword) values (1,'武汉,加油07', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉');
-insert into hd_user_article (userid,title, img, content,createtime,author,keyword) values (1,'武汉,加油08', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉');
-insert into hd_user_article (userid,title, img, content,createtime,author,keyword) values (1,'武汉,加油09', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉');
+insert into hd_user_article (userid,title, img, content,createtime,author,keyword,state) values (1,'武汉,加油01', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,title, img, content,createtime,author,keyword,state) values (1,'武汉,加油02', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,title, img, content,createtime,author,keyword,state) values (1,'武汉,加油03', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,title, img, content,createtime,author,keyword,state) values (1,'武汉,加油04', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,title, img, content,createtime,author,keyword,state) values (1,'武汉,加油05', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,title, img, content,createtime,author,keyword,state) values (1,'武汉,加油06', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,title, img, content,createtime,author,keyword,state) values (1,'武汉,加油07', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,title, img, content,createtime,author,keyword,state) values (1,'武汉,加油08', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,title, img, content,createtime,author,keyword,state) values (1,'武汉,加油09', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
 
 insert into hd_user_article_read (userid,aid) values (1,1);
 insert into hd_user_article_read (userid,aid) values (1,2);

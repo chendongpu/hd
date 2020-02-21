@@ -36,9 +36,24 @@ CREATE TABLE `hd_user` (
   `hospital` varchar(255) NOT NULL DEFAULT '' COMMENT '医院',
   `level` varchar(255) NOT NULL DEFAULT '' COMMENT '级别',
   `goodat` varchar(255) NOT NULL DEFAULT '' COMMENT '擅长',
+  `money` bigint(20) NOT NULL DEFAULT '0' COMMENT '诊金',
+  `duration` int(11) NOT NULL DEFAULT '0' COMMENT '时长/分',
   PRIMARY KEY (`id`),
   KEY `idx_mobile` (`mobile`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户';
+
+DROP TABLE IF EXISTS `hd_treatment_order`;
+CREATE TABLE `hd_treatment_order` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `orderid` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '订单id',
+  `userid` INT(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '用户id',
+  `doctorid` INT(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '医生id',
+  `money` BIGINT(20) NOT NULL DEFAULT '0' COMMENT '诊金',
+  `duration` INT(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '时长',
+  `createtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `state` INT(1) NOT NULL DEFAULT '0' COMMENT '0 未支付 1已支付 2已结束 3已评价',
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='接诊订单';
 
 
 

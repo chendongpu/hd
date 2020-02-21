@@ -8,6 +8,8 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Type;
+import org.joda.money.Money;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -59,6 +61,10 @@ public class User {
     private String hospital;
     private String level;
     private String goodat;
+    @Type(type="org.jadira.usertype.moneyandcurrency.joda.PersistentMoneyMinorAmount",
+            parameters = {@org.hibernate.annotations.Parameter(name="currencyCode",value="CNY")})
+    private Money money;
+    private Integer duration;
 
 
 
