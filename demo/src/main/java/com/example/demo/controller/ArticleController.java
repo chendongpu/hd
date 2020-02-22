@@ -58,7 +58,7 @@ public class ArticleController {
 
         List<ArticleResponse> articleResponseList =new ArrayList<>();
 
-        List<UserArticle> articleList = pageArticle.toList();
+        List<UserArticle> articleList = pageArticle.getContent();
 
         for(UserArticle userArticle:articleList){
 
@@ -107,7 +107,7 @@ public class ArticleController {
 
         List<ArticleResponse> articleResponseList =new ArrayList<>();
 
-        List<UserArticle> articleList = pageArticle.toList();
+        List<UserArticle> articleList = pageArticle.getContent();
 
         for(UserArticle userArticle:articleList){
 

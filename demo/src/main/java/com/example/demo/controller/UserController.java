@@ -33,11 +33,21 @@ public class UserController {
     private UserService userService;
 
     //登录
+    //{"username":"apple","password":"123456"}
+    //{"mobile":"15057190640","password":"123456"}
     @PostMapping("/login")
     @LoginToken
     public ResultBody login(@RequestBody @Valid User user) {
         JSONObject jsonObject = new JSONObject();
-        Optional<User> userOptional = (userService.findByUsername(user.getUsername()));
+        Optional<User> userOptional=null;
+        if(null!=user.getUsername() && !"".equals(user.getUsername())){
+            userOptional = (userService.findByUsername(user.getUsername()));
+        }
+
+        if(null!=user.getMobile() && !"".equals(user.getMobile())){
+            userOptional = (userService.findByMobile(user.getMobile()));
+        }
+
         log.info("userOptional:{}",userOptional);
         log.info("user:{}",user);
 

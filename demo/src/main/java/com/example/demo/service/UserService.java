@@ -40,6 +40,13 @@ public class UserService {
         return user;
     }
 
+    public Optional<User> findByMobile(String mobile){
+        ExampleMatcher matcher=ExampleMatcher.matching().withMatcher("mobile",exact().ignoreCase());
+        Optional<User> user =userRepository.findOne(Example.of(User.builder().mobile(mobile).build(),matcher));
+        log.info("User Found:{}",user);
+        return user;
+    }
+
 
     public Optional<User> findUserById(Long id){
         Optional<User> user =userRepository.findById(id);

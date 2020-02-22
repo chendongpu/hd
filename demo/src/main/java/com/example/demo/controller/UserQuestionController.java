@@ -130,7 +130,7 @@ public class UserQuestionController {
         JSONObject jsonObject = new JSONObject();
         Page<UserQuestion> pageQuestion = userQuestionService.allUserQuestion(userQuestion,pageable);
 
-        List<UserQuestion> list1=pageQuestion.toList();
+        List<UserQuestion> list1=pageQuestion.getContent();
 
 
         List<UserQuestionResponse> list2=new ArrayList<>();

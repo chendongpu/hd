@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -15,6 +16,9 @@ public class NewUserArticleRequest {
 
     @NotEmpty
     private String title;
+
+    @NotNull
+    private Integer type;
 
     @NotEmpty
     private String img;

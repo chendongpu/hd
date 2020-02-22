@@ -95,7 +95,7 @@ public class UserArticleReadController {
         UserArticleRead userArticleRead = UserArticleRead.builder().userid(userid).build();
         JSONObject jsonObject = new JSONObject();
         Page<UserArticle> pageUser = userArticleReadService.allUserArticleRead(userArticleRead,pageable);
-        jsonObject.put("list", pageUser.toList());
+        jsonObject.put("list", pageUser.getContent());
 
         return ResultBody.success(jsonObject);
     }

@@ -123,7 +123,7 @@ public class UserTestController {
         UserTest userTest = UserTest.builder().userid(userid).build();
         JSONObject jsonObject = new JSONObject();
         Page<UserTest> pageTest = userTestService.allUserTest(userTest,pageable);
-        jsonObject.put("list", pageTest.toList());
+        jsonObject.put("list", pageTest.getContent());
         return ResultBody.success(jsonObject);
 
     }

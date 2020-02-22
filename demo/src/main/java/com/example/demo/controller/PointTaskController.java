@@ -107,7 +107,7 @@ public class PointTaskController {
         PointTask pointTask = PointTask.builder().build();
         JSONObject jsonObject = new JSONObject();
         Page<PointTask> pageAddress = pointTaskService.allPointTask(pointTask,pageable);
-        jsonObject.put("list", pageAddress.toList());
+        jsonObject.put("list", pageAddress.getContent());
         return ResultBody.success(jsonObject);
 
     }

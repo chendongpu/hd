@@ -56,7 +56,7 @@ public class DoctorController {
 
         List<User> userList =new ArrayList<>();
 
-        userList = pageUser.toList();
+        userList = pageUser.getContent();
 
         for(User user:userList){
 
@@ -105,7 +105,7 @@ public class DoctorController {
 
         List<DoctorResponse> doctorResponseList =new ArrayList<>();
 
-        List<User> userList = pageUser.toList();
+        List<User> userList = pageUser.getContent();
 
         for(User user:userList){
 

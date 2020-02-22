@@ -113,7 +113,7 @@ public class UserMsgController {
         UserMsg userMsg = UserMsg.builder().userid(userid).build();
         JSONObject jsonObject = new JSONObject();
         Page<UserMsg> pageMsg = userMsgService.allUserMsg(userMsg,pageable);
-        jsonObject.put("list", pageMsg.toList());
+        jsonObject.put("list", pageMsg.getContent());
         return ResultBody.success(jsonObject);
 
     }

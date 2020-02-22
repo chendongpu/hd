@@ -95,7 +95,7 @@ public class UserArticleCollectController {
         UserArticleCollect userArticleCollect = UserArticleCollect.builder().userid(userid).build();
         JSONObject jsonObject = new JSONObject();
         Page<UserArticle> pageUser = userArticleCollectService.allUserArticleCollect(userArticleCollect,pageable);
-        jsonObject.put("list", pageUser.toList());
+        jsonObject.put("list", pageUser.getContent());
 
         return ResultBody.success(jsonObject);
     }

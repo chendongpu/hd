@@ -149,7 +149,7 @@ public class UserArticleCommentController {
         JSONObject jsonObject = new JSONObject();
         Page<UserArticleComment> pageTask = userArticleCommentService.allUserArticleComment(userArticleComment,pageable);
 
-        List<UserArticleComment>  userArticleCommentList = pageTask.toList();
+        List<UserArticleComment>  userArticleCommentList = pageTask.getContent();
 
         List<PackUserArticleComment> packUserArticleCommentList=new ArrayList<>();
 

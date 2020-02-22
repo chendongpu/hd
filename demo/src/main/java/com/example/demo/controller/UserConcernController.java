@@ -94,7 +94,7 @@ public class UserConcernController {
         UserConcern userConcern = UserConcern.builder().userid(userid).build();
         JSONObject jsonObject = new JSONObject();
         Page<User> pageUser = userConcernService.allUserConcern(userConcern,pageable);
-        jsonObject.put("list", pageUser.toList());
+        jsonObject.put("list", pageUser.getContent());
 
         return ResultBody.success(jsonObject);
     }
@@ -117,7 +117,7 @@ public class UserConcernController {
         UserConcern userConcern = UserConcern.builder().concernid(userid).build();
         JSONObject jsonObject = new JSONObject();
         Page<User> pageUser = userConcernService.allFans(userConcern,pageable);
-        jsonObject.put("list", pageUser.toList());
+        jsonObject.put("list", pageUser.getContent());
         return ResultBody.success(jsonObject);
     }
 

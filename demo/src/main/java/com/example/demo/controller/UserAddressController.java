@@ -127,7 +127,7 @@ public class UserAddressController {
         UserAddress userAddress = UserAddress.builder().userid(userid).build();
         JSONObject jsonObject = new JSONObject();
         Page<UserAddress> pageAddress = userAddressService.allUserAddress(userAddress,pageable);
-        jsonObject.put("list", pageAddress.toList());
+        jsonObject.put("list", pageAddress.getContent());
         return ResultBody.success(jsonObject);
 
     }

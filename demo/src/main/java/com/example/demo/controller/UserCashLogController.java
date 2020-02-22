@@ -94,7 +94,7 @@ public class UserCashLogController {
         UserCashLog userCashLog = UserCashLog.builder().userid(userid).build();
         JSONObject jsonObject = new JSONObject();
         Page<UserCashLog> pageCash = userCashLogService.allUserCashLog(userCashLog,pageable);
-        jsonObject.put("list", pageCash.toList());
+        jsonObject.put("list", pageCash.getContent());
         return ResultBody.success(jsonObject);
 
     }

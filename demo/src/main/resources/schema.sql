@@ -84,9 +84,10 @@ DROP TABLE IF EXISTS `hd_user_article`;
 CREATE TABLE `hd_user_article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` varchar(255) NOT NULL DEFAULT '' COMMENT '用户id',
+  `type` tinyint(1) DEFAULT '0' COMMENT '文章类型 0文章 1视频',
   `title` varchar(255) NOT NULL DEFAULT '' COMMENT '文章标题',
   `img` text NOT NULL COMMENT '文章图片',
-  `content` longtext COMMENT '文章内容',
+  `content` longtext COMMENT '文章内容/视频',
   `createtime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
   `author` varchar(20) NOT NULL DEFAULT '' COMMENT '发布作者',
   `readnum` int(11) NOT NULL DEFAULT '0' COMMENT '阅读量',

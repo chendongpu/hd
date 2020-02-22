@@ -100,7 +100,7 @@ public class UserTaskLogController {
         UserTaskLog userTaskLog = UserTaskLog.builder().userid(userid).build();
         JSONObject jsonObject = new JSONObject();
         Page<UserTaskLog> pageTask = userTaskLogService.allUserTaskLog(userTaskLog,pageable);
-        jsonObject.put("list", pageTask.toList());
+        jsonObject.put("list", pageTask.getContent());
         return ResultBody.success(jsonObject);
 
     }

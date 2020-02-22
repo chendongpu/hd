@@ -122,7 +122,7 @@ public class UserVideoController {
         UserVideo userVideo = UserVideo.builder().userid(userid).build();
         JSONObject jsonObject = new JSONObject();
         Page<UserVideo> pageVideo = userVideoService.allUserVideo(userVideo,pageable);
-        jsonObject.put("list", pageVideo.toList());
+        jsonObject.put("list", pageVideo.getContent());
         return ResultBody.success(jsonObject);
 
     }

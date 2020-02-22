@@ -243,7 +243,7 @@ public class UserTestLogController {
         UserTestLog userTestLog = UserTestLog.builder().userid(userid).build();
         JSONObject jsonObject = new JSONObject();
         Page<UserTestLog> pageTest = userTestLogService.allUserTestLog(userTestLog,pageable);
-        jsonObject.put("list", pageTest.toList());
+        jsonObject.put("list", pageTest.getContent());
         return ResultBody.success(jsonObject);
 
     }

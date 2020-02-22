@@ -89,7 +89,7 @@ public class TreatmentOrderController {
         TreatmentOrder treatmentOrder = TreatmentOrder.builder().userid(userid).build();
         JSONObject jsonObject = new JSONObject();
         Page<TreatmentOrder> pageto = treatmentOrderService.allTreatmentOrder(treatmentOrder,pageable);
-        jsonObject.put("list", pageto.toList());
+        jsonObject.put("list", pageto.getContent());
         return ResultBody.success(jsonObject);
 
     }
