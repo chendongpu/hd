@@ -1,4 +1,4 @@
-USE `haiduo`;
+USE `test`;
 
 
 DROP TABLE IF EXISTS `hd_doctor_department`;
@@ -6,7 +6,7 @@ CREATE TABLE `hd_doctor_department` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL DEFAULT '' COMMENT '科室名字',
   `img` varchar(255) NOT NULL DEFAULT '' COMMENT '科室图片',
-  `createtime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `createtime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='医生科室';
 
@@ -22,7 +22,7 @@ CREATE TABLE `hd_user` (
   `mobileverify` tinyint(3) NOT NULL DEFAULT '0' COMMENT '手机是否验证',
   `password` varchar(32) NOT NULL DEFAULT '' COMMENT '密码',
   `content` text NOT NULL COMMENT '简介',
-  `createtime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `createtime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
   `birthyear` varchar(255) NOT NULL DEFAULT '' COMMENT '出生年份',
   `birthmonth` varchar(255) NOT NULL DEFAULT '' COMMENT '出生月份',
   `birthday` varchar(255) NOT NULL DEFAULT '' COMMENT '出生日期',
@@ -50,7 +50,7 @@ CREATE TABLE `hd_treatment_order` (
   `doctorid` INT(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '医生id',
   `money` BIGINT(20) NOT NULL DEFAULT '0' COMMENT '诊金',
   `duration` INT(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '时长',
-  `createtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `createtime` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
   `state` INT(1) NOT NULL DEFAULT '0' COMMENT '0 未支付 1已支付 2已结束 3已评价',
   PRIMARY KEY (`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='接诊订单';
@@ -73,7 +73,7 @@ CREATE TABLE `hd_user_address` (
   `street` varchar(50) NOT NULL DEFAULT '' COMMENT '街道',
   `lng` varchar(255) NOT NULL DEFAULT '' COMMENT '经度',
   `lat` varchar(255) NOT NULL DEFAULT '' COMMENT '纬度',
-    `createtime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+    `createtime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
   PRIMARY KEY (`id`),
   KEY `idx_userid` (`userid`),
   KEY `idx_isdefault` (`isdefault`),
@@ -88,7 +88,7 @@ CREATE TABLE `hd_user_article` (
   `title` varchar(255) NOT NULL DEFAULT '' COMMENT '文章标题',
   `img` text NOT NULL COMMENT '文章图片',
   `content` longtext COMMENT '文章内容/视频',
-  `createtime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `createtime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
   `author` varchar(20) NOT NULL DEFAULT '' COMMENT '发布作者',
   `readnum` int(11) NOT NULL DEFAULT '0' COMMENT '阅读量',
   `likenum` int(11) NOT NULL DEFAULT '0' COMMENT '点赞数',
@@ -117,7 +117,7 @@ CREATE TABLE `hd_user_video` (
   `title` varchar(255) NOT NULL DEFAULT '' COMMENT '标题',
   `img` varchar(255) NOT NULL DEFAULT '' COMMENT '视频图片',
   `video` varchar(255) NOT NULL DEFAULT '' COMMENT '视频地址',
-  `createtime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `createtime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
   `state` int(1) NOT NULL DEFAULT '0' COMMENT '是否显示',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='视频';
@@ -149,7 +149,7 @@ CREATE TABLE `hd_user_test` (
   `userid` INT(11) NOT NULL DEFAULT '0' COMMENT '用户id',
   `title` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '测评标题',
   `content` LONGTEXT COMMENT '测评说明',
-  `createtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `createtime` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
   `state` INT(1) NOT NULL DEFAULT '0' COMMENT '是否审核通过',
   PRIMARY KEY (`id`),
   KEY `idx_title` (`title`),
@@ -164,7 +164,7 @@ CREATE TABLE `hd_user_test_report` (
   `score` INT(11) NOT NULL DEFAULT '0' COMMENT '分值',
   `title` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '测评结果标题',
   `content` LONGTEXT COMMENT '测评正文',
-  `createtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `createtime` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
   PRIMARY KEY (`id`),
   KEY `idx_title` (`title`),
   KEY `idx_content` (`content`(10))
@@ -184,7 +184,7 @@ CREATE TABLE `hd_user_question` (
   `title` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '问题',
    `type` int(1) NOT NULL DEFAULT '0' COMMENT '0 单选 1多选 2填空',
    `score` INT(11) NOT NULL DEFAULT '0' COMMENT '得分',
-    `createtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+    `createtime` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
   PRIMARY KEY (`id`),
   KEY `idx_title` (`title`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='用户问题';
@@ -212,7 +212,7 @@ CREATE TABLE `hd_user_test_log` (
     `testid` INT(11) NOT NULL DEFAULT '0' COMMENT '测评id',
     `title` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '测评标题',
     `content` LONGTEXT COMMENT '测评说明',
-    `createtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+    `createtime` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
      `score` INT(11) NOT NULL DEFAULT '0' COMMENT '测评分数',
      `result` LONGTEXT COMMENT '测评结果',
      PRIMARY KEY (`id`),
@@ -226,7 +226,7 @@ CREATE TABLE `hd_point_task` (
   `title` varchar(255) NOT NULL DEFAULT '' COMMENT '任务名称',
   `type` int(1) NOT NULL DEFAULT '0' COMMENT '0 签到 1开直播 2分享',
   `point` int(11) NOT NULL DEFAULT '0' COMMENT '奖励积分数量',
-  `createtime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `createtime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
   `state` int(1) NOT NULL DEFAULT '0' COMMENT '是否审核通过',
   PRIMARY KEY (`id`),
   KEY `idx_title` (`title`)
@@ -240,7 +240,7 @@ CREATE TABLE `hd_user_msg` (
   `type` tinyint(1) NOT NULL DEFAULT '0' COMMENT '类型 0系统通知 1评论 2 点赞',
   `otherid` int(11) NOT NULL DEFAULT '0' COMMENT '评论或者点赞用户id',
   `isread` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否已读',
-  `createtime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `createtime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
   PRIMARY KEY (`id`),
   KEY `idx_userid` (`userid`),
   KEY `idx_isread` (`isread`)
@@ -253,7 +253,7 @@ CREATE TABLE `hd_user_task_log` (
   `taskid` INT(11) NOT NULL DEFAULT '0' COMMENT '任务id',
   `title` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '任务名称',
   `point` INT(11) NOT NULL DEFAULT '0' COMMENT '奖励积分数量',
-  `createtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `createtime` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
   PRIMARY KEY (`id`),
   KEY `idx_userid` (`userid`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='用户完成任务记录';
@@ -265,7 +265,7 @@ CREATE TABLE `hd_user_task_log` (
   `taskid` INT(11) NOT NULL DEFAULT '0' COMMENT '任务id',
   `title` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '任务名称',
   `point` INT(11) NOT NULL DEFAULT '0' COMMENT '奖励积分数量',
-  `createtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `createtime` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
   PRIMARY KEY (`id`),
   KEY `idx_userid` (`userid`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='用户完成任务记录';
@@ -277,7 +277,7 @@ CREATE TABLE `hd_user_cash_log` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `userid` INT(11) NOT NULL DEFAULT '0' COMMENT '用户id',
   `money` INT(11) NOT NULL DEFAULT '0' COMMENT '提现金额',
-  `createtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `createtime` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
   `state` int(1) NOT NULL DEFAULT '0' COMMENT '是否审核通过',
   PRIMARY KEY (`id`),
   KEY `idx_userid` (`userid`)
@@ -293,7 +293,7 @@ CREATE TABLE `hd_user_article_comment` (
   `isreply` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否是回复',
   `pid` INT(11) NOT NULL DEFAULT '0' COMMENT '回复评论id',
   `comment` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '评论',
-  `createtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `createtime` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
   `state` int(1) NOT NULL DEFAULT '0' COMMENT '是否审核通过',
   PRIMARY KEY (`id`),
   KEY `idx_userid` (`userid`)
