@@ -2,11 +2,14 @@ package com.example.demo.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.example.demo.controller.request.MsgRequest;
 import com.example.demo.handler.BizException;
 import com.example.demo.handler.ResultBody;
 import com.example.demo.jwt.CheckToken;
+import com.example.demo.model.User;
 import com.example.demo.util.CheckSumBuilder;
 import com.example.demo.util.UUIDUtil;
+import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.DefaultConnectionKeepAliveStrategy;
@@ -17,13 +20,22 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.lang.Nullable;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
+import sun.misc.BASE64Encoder;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
@@ -258,8 +270,147 @@ public class IMController {
     }
 
 
+    //发送普通消息
+    //{"from":"apple","to":"helloworld","ope":0,"type":0,"body":{"msg":"hello"}}
+    @CheckToken
+    @PostMapping("/send_msg")
+    public ResultBody sendMsg(@RequestBody @Valid MsgRequest msgRequest){
+        String url = "https://api.netease.im/nimserver/msg/sendMsg.action";
+        HttpHeaders headers=makeHeaders(APPKEY,SECRET);
+        MultiValueMap<String, String> map= new LinkedMultiValueMap<>();
+        map.add("from", msgRequest.getFrom());
+        map.add("to", msgRequest.getTo());
+        map.add("ope", msgRequest.getOpe().toString());
+        map.add("type", msgRequest.getType().toString());
+        map.add("body", JSON.toJSONString(msgRequest.getBody()));
+        HttpEntity<MultiValueMap<String, String>> request = new org.springframework.http.HttpEntity<>(map, headers);
+        ResponseEntity<JSONObject> exchange = restTemplate.exchange(url, HttpMethod.POST, request, JSONObject.class);
+
+        try{
+            return ResultBody.success(exchange.getBody());
+        }catch (Exception e){
+            throw new BizException("-1","请求第三方服务器出现异常！");
+        }
+    }
+
+    //单聊云端历史消息查询
+    //from:apple
+    //to:helloworld
+    //begintime:1582685390901
+    //endtime:1582686378000
+    //limit:50
+    @CheckToken
+    @PostMapping("/query_session_msg")
+    public ResultBody querySessionMsg(@NotEmpty String from, @NotEmpty String to ,@NotNull Long begintime, @NotNull Long endtime, @NotNull Long limit){
+        String url = "https://api.netease.im/nimserver/history/querySessionMsg.action";
+        HttpHeaders headers=makeHeaders(APPKEY,SECRET);
+        MultiValueMap<String, String> map= new LinkedMultiValueMap<>();
+        map.add("from", from);
+        map.add("to", to);
+        map.add("begintime", begintime.toString());
+        map.add("endtime", endtime.toString());
+        map.add("limit", limit.toString());
+        HttpEntity<MultiValueMap<String, String>> request = new org.springframework.http.HttpEntity<>(map, headers);
+        ResponseEntity<JSONObject> exchange = restTemplate.exchange(url, HttpMethod.POST, request, JSONObject.class);
+
+        try{
+            return ResultBody.success(exchange.getBody());
+        }catch (Exception e){
+            throw new BizException("-1","请求第三方服务器出现异常！");
+        }
+    }
 
 
+    //文件上传
+    //img:选择图片
+    //http://nim-nosdn.netease.im/MTY3Nzk0ODA=/bmltd18wXzE1ODI2ODk2MDcxNDNfZTg0OWIwNWEtMTA1Ni00NTU0LWE4YjAtMTljNGFiMDc1YTFh
+    @CheckToken
+    @PostMapping("/upload")
+    public ResultBody upload(@Nullable @RequestParam("img") MultipartFile file) {
+        String url = "https://api.netease.im/nimserver/msg/upload.action";
+        // 首先校验图片格式
+        List<String> imageType = Lists.newArrayList(".jpg", ".jpeg", ".png", ".bmp", ".gif");
+
+        if (file == null) {
+            throw new BizException("-1", "没有上传图片！");
+        }
+
+        String contentType = file.getContentType();
+        String fileName = file.getOriginalFilename();
+        log.info("fileName:{}",fileName);
+        log.info("getContentType:{}",contentType);
+
+        String suffix="";
+        int suffixIndex = fileName.lastIndexOf(".");
+        if (suffixIndex == -1) {    // 无后缀
+            throw new BizException("-1","图片上传不合法！");
+        }
+
+        // 存在后缀
+        suffix= fileName.substring(suffixIndex, fileName.length());
+
+        if (!imageType.contains(suffix)) {
+            throw new BizException("-1","图片类型不合法！");
+        }
+
+        HttpHeaders headers=makeHeaders(APPKEY,SECRET);
+        MultiValueMap<String, String> map= new LinkedMultiValueMap<>();
+        InputStream in = null;
+        byte[] data = null;
+        //读取图片字节数组
+        try
+        {
+            in = file.getInputStream();
+            data = new byte[in.available()];
+            in.read(data);
+            in.close();
+        }catch (IOException e)
+        {
+            throw new BizException("-1","文件转base64出现异常！");
+        }
+        //对字节数组Base64编码
+        BASE64Encoder encoder = new BASE64Encoder();
+        map.add("content", encoder.encode(data));
+        HttpEntity<MultiValueMap<String, String>> request = new org.springframework.http.HttpEntity<>(map, headers);
+        ResponseEntity<JSONObject> exchange = restTemplate.exchange(url, HttpMethod.POST, request, JSONObject.class);
+
+        try{
+            return ResultBody.success(exchange.getBody());
+        }catch (Exception e){
+            throw new BizException("-1","请求第三方服务器出现异常！");
+        }
+    }
+
+
+
+    //消息撤回
+    //from:apple
+    //to:helloworld
+    //deleteMsgid:359980429841
+    //timetag:1582695507633
+    //type:7
+    //msg:"这是一条撤回消息"
+    @CheckToken
+    @PostMapping("/recall_msg")
+    public ResultBody recallMsg(@NotEmpty String from,@NotEmpty String to,@NotNull Long deleteMsgid, @NotNull Long timetag, @NotNull Integer type, @Nullable String msg) {
+        String url = "https://api.netease.im/nimserver/msg/recall.action";
+        HttpHeaders headers=makeHeaders(APPKEY,SECRET);
+        MultiValueMap<String, String> map= new LinkedMultiValueMap<>();
+        map.add("from", from);
+        map.add("to", to);
+        map.add("deleteMsgid", deleteMsgid.toString());
+        map.add("timetag", timetag.toString());
+        map.add("type", type.toString());
+        map.add("msg", msg);
+        HttpEntity<MultiValueMap<String, String>> request = new org.springframework.http.HttpEntity<>(map, headers);
+        ResponseEntity<JSONObject> exchange = restTemplate.exchange(url, HttpMethod.POST, request, JSONObject.class);
+
+        try{
+            return ResultBody.success(exchange.getBody());
+        }catch (Exception e){
+            throw new BizException("-1","请求第三方服务器出现异常！");
+        }
+    }
 
 
 
