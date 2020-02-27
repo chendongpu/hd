@@ -67,7 +67,7 @@ public class User implements Serializable {
     private Money money;
     private Integer duration;
 
-
+    private String departmenttel;
 
 
 

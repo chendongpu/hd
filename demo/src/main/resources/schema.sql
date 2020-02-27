@@ -38,6 +38,7 @@ CREATE TABLE `hd_user` (
   `goodat` varchar(255) NOT NULL DEFAULT '' COMMENT '擅长',
   `money` bigint(20) NOT NULL DEFAULT '0' COMMENT '诊金',
   `duration` int(11) NOT NULL DEFAULT '0' COMMENT '时长/分',
+  `departmenttel` varchar(255) NOT NULL DEFAULT '' COMMENT '科室电话',
   PRIMARY KEY (`id`),
   KEY `idx_mobile` (`mobile`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户';
