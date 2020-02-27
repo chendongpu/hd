@@ -54,10 +54,12 @@ public class UserService {
         return user;
     }
 
-    public User createUser(String username, String password) {
-        User user = User.builder().username(username).password(MD5Utils.stringToMD5(password)).content("").build();
+    public User createUser(String mobile, String password) {
+        User user = User.builder().mobile(mobile).password(MD5Utils.stringToMD5(password)).content("").build();
         log.info("User:{}",user);
         User saved = userRepository.save(user);
+        saved.setUsername("hd"+(saved.getId()+10000));
+        this.updateUser(saved);
         log.info("New User:{}", saved);
         return saved;
     }

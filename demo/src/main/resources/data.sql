@@ -16,29 +16,29 @@ insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('口腔�
 insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('心内科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
 
 
-insert into hd_user (username, password,avatar, createtime,content) values ('apple', 'e10adc3949ba59abbe56e057f20f883e','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg', now(),'');
-insert into hd_user (username, password, createtime,content) values ('pear', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
-insert into hd_user (username, password, createtime,content) values ('banana', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
-insert into hd_user (username, password, createtime,content) values ('orange', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
-insert into hd_user (username, password, createtime,content) values ('watermelon', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
-insert into hd_user (username, password, createtime,content) values ('egg', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
-insert into hd_user (username, password, createtime,content) values ('grape', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
-insert into hd_user (username, password, createtime,content) values ('peach', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
-insert into hd_user (username, password, createtime,content) values ('lemon', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
-insert into hd_user (username, password, createtime,content) values ('pineapple', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
-insert into hd_user (username, password, createtime,content) values ('cherry', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
+insert into hd_user (mobile,username, password,avatar, createtime,content) values ('15057190640','hd10001', 'e10adc3949ba59abbe56e057f20f883e','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg', now(),'');
+insert into hd_user (mobile,username, password, createtime,content) values ('15057190642','hd10002', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
+insert into hd_user (mobile,username, password, createtime,content) values ('15057190643','hd10003', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
+insert into hd_user (mobile,username, password, createtime,content) values ('15057190644','hd10004', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
+insert into hd_user (mobile,username, password, createtime,content) values ('15057190645','hd10005', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
+insert into hd_user (mobile,username, password, createtime,content) values ('15057190646','hd10006', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
+insert into hd_user (mobile,username, password, createtime,content) values ('15057190647','hd10007', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
+insert into hd_user (mobile,username, password, createtime,content) values ('15057190648','hd10008', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
+insert into hd_user (mobile,username, password, createtime,content) values ('15057190649','hd10009', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
+insert into hd_user (mobile,username, password, createtime,content) values ('15057190650','hd10010','e10adc3949ba59abbe56e057f20f883e', now(),'');
+insert into hd_user (mobile,username, password, createtime,content) values ('15057190651','hd10011', 'e10adc3949ba59abbe56e057f20f883e', now(),'');
 
 
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生1','wang1', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',2000,10);
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生2','wang2', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,8,'人民医院','主任医师','擅长外科',3000,15);
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生3','wang3', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',1500,12);
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生4','wang4', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,1,'人民医院','主任医师','擅长儿科',2000,10);
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生5','wang5', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',2000,10);
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生6','wang6', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',1500,12);
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生7','wang7', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',1800,15);
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生8','wang8', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',2400,18);
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生9','wang9', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',2500,15);
-insert into hd_user (realname,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生10','wang10', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',1600,12);
+insert into hd_user (realname,mobile,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生1','15057190651','hd10012', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',2000,10);
+insert into hd_user (realname,mobile,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生2','15057190652','hd10013', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,8,'人民医院','主任医师','擅长外科',3000,15);
+insert into hd_user (realname,mobile,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生3','15057190653','hd10014', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',1500,12);
+insert into hd_user (realname,mobile,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生4','15057190654','hd10015', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,1,'人民医院','主任医师','擅长儿科',2000,10);
+insert into hd_user (realname,mobile,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生5','15057190655','hd10016', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',2000,10);
+insert into hd_user (realname,mobile,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生6','15057190656','hd10017','e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',1500,12);
+insert into hd_user (realname,mobile,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生7','15057190657','hd10018', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',1800,15);
+insert into hd_user (realname,mobile,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生8','15057190658','hd10019', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',2400,18);
+insert into hd_user (realname,mobile,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生9','15057190659','hd10020', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',2500,15);
+insert into hd_user (realname,mobile,username, password, createtime,content,isdoctor,department,hospital,`level`,goodat,`money`,`duration`) values ('王医生10','15057190660','hd10021', 'e10adc3949ba59abbe56e057f20f883e', now(),'',1,3,'人民医院','主任医师','擅长内科',1600,12);
 
 
 insert  into `hd_treatment_order`(`orderid`,`userid`,`doctorid`,`money`,`duration`,`createtime`,`state`) values ('1000001556899032',1,12,2000,10,now(),0);

@@ -14,7 +14,7 @@ import java.util.List;
 public class NewUserRequest {
     private String mobile;
 
-    @NotEmpty
+
     private String username;
 
     @NotEmpty

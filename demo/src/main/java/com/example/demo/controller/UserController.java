@@ -77,15 +77,16 @@ public class UserController {
     }
 
     //注册
+    //{"mobile":"15057190640","password":"123456"}
     @PostMapping("/register")
     public ResultBody register(  @Valid @RequestBody NewUserRequest newUser){
         JSONObject jsonObject = new JSONObject();
-        Optional<User> userOptional = userService.findByUsername(newUser.getUsername());
+        Optional<User> userOptional = userService.findByMobile(newUser.getMobile());
         if (userOptional.isPresent()) {
-            throw new BizException("-1","用户名已存在");
+            throw new BizException("-1","用户手机号已存在");
         }
         log.info("Receive new User{}",newUser);
-        return ResultBody.success(userService.createUser(newUser.getUsername(),newUser.getPassword())) ;
+        return ResultBody.success(userService.createUser(newUser.getMobile(),newUser.getPassword())) ;
     }
 
 
