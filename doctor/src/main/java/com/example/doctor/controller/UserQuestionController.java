@@ -1,18 +1,17 @@
-package com.example.demo.controller;
+package com.example.doctor.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.auth0.jwt.JWT;
-import com.example.demo.controller.request.NewUserQuestionRequest;
-import com.example.demo.controller.response.UserQuestionResponse;
-import com.example.demo.handler.BizException;
-import com.example.demo.handler.ResultBody;
-import com.example.demo.jwt.CheckToken;
-import com.example.demo.model.User;
-import com.example.demo.model.UserQuestion;
-import com.example.demo.model.UserQuestionChoice;
-import com.example.demo.service.UserQuestionChoiceService;
-import com.example.demo.service.UserService;
-import com.example.demo.service.UserQuestionService;
+import com.example.doctor.controller.request.NewUserQuestionRequest;
+import com.example.doctor.controller.response.UserQuestionResponse;
+import com.example.doctor.handler.BizException;
+import com.example.doctor.handler.ResultBody;
+import com.example.doctor.jwt.CheckToken;
+import com.example.doctor.model.UserQuestion;
+import com.example.doctor.model.UserQuestionChoice;
+import com.example.doctor.service.UserQuestionChoiceService;
+import com.example.doctor.service.UserQuestionService;
+import com.example.doctor.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -46,7 +45,7 @@ public class UserQuestionController {
     HttpServletRequest request;
 
     //添加问题
-    //{{"title":"你选择网购的主要原因?","type":0,"score":10,"userQuestionChoices":[{"choice":"方便快捷"},{"choice":"品类齐全"},{"choice":"价格便宜"}]}
+    //{"title":"你选择网购的主要原因?","type":0,"score":10,"userQuestionChoices":[{"choice":"方便快捷"},{"choice":"品类齐全"},{"choice":"价格便宜"}]}
     @CheckToken
     @PostMapping("/create_user_question")
     public ResultBody createUserQuestion( @Valid @RequestBody NewUserQuestionRequest newUserQuestionReq) {
@@ -55,7 +54,7 @@ public class UserQuestionController {
             throw new BizException("-1","问题已存在");
         }
 
-        log.info("Receive new UserQuestion{}",newUserQuestionReq);
+        log.info("newUserQuestionReq{}",newUserQuestionReq);
         UserQuestion newUserQuestion=new UserQuestion();
         String token = request.getHeader("token");
         // 获取 token 中的 user id
@@ -68,7 +67,7 @@ public class UserQuestionController {
         newUserQuestion.setScore(newUserQuestionReq.getScore());
         UserQuestion saved= userQuestionService.createUserQuestion(newUserQuestion);
 
-        log.info("UserQuestion{}",newUserQuestion);
+        log.info("newUserQuestion{}",newUserQuestion);
         List<UserQuestionChoice> choices = newUserQuestionReq.getUserQuestionChoices();
         for(UserQuestionChoice choice:choices){
             choice.setQuestionid(saved.getId());
@@ -96,7 +95,7 @@ public class UserQuestionController {
     //删除问题
     @CheckToken
     @GetMapping(value = "/remove_user_question",params = "id")
-    public ResultBody removeUserQuestion(@RequestParam  Long id) {
+    public ResultBody removeUserQuestion(@RequestParam Long id) {
         Optional<UserQuestion> userQuestion=userQuestionService.findUserQuestionById(id);
         if(!userQuestion.isPresent()){
             throw new BizException("-1","问题不存在");

@@ -12,6 +12,7 @@ import com.example.doctor.model.User;
 import com.example.doctor.service.UserService;
 import com.example.doctor.util.MD5Utils;
 import lombok.extern.slf4j.Slf4j;
+import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
@@ -124,6 +125,68 @@ public class UserController {
         return ResultBody.success(newuser);
 
     }
+
+    @CheckToken
+    @PostMapping("/info")
+    public ResultBody info(@Nullable @RequestParam("gender") Integer gender,
+                           @Nullable @RequestParam("province") String province,
+                           @Nullable @RequestParam("city") String city,
+                           @Nullable @RequestParam("hospital") String hospital,
+                           @Nullable @RequestParam("department") Long department,
+                           @Nullable @RequestParam("level") String level,
+                           @Nullable @RequestParam("money") Money money,
+                           @Nullable @RequestParam("departmenttel") String departmenttel
+    ){
+
+        String token = request.getHeader("token");
+        // 获取 token 中的 user id
+        log.info("token:{}",token);
+        String userId= JWT.decode(token).getClaim("id").asString();
+        Long userid =Long.parseLong(userId);
+
+        Optional<User> userOptional = userService.findUserById(userid);
+
+        User newuser = userOptional.get();
+
+        if(!(null == gender)){
+            newuser.setGender(gender);
+        }
+
+        if(!(null==province)){
+            newuser.setProvince(province);
+        }
+
+        if(!(null==city)){
+            newuser.setCity(city);
+        }
+
+        if(!(null==hospital)){
+            newuser.setHospital(hospital);
+        }
+
+        if(!(null==department)){
+            newuser.setDepartment(department);
+        }
+
+        if(!(null==level)){
+            newuser.setLevel(level);
+        }
+
+        if(!(null==money)){
+            newuser.setMoney(money);
+        }
+
+        if(!(null==departmenttel)){
+            newuser.setDepartmenttel(departmenttel);
+        }
+
+        userService.updateUser(newuser);
+
+        return ResultBody.success(newuser);
+
+    }
+
+
 
 
 
