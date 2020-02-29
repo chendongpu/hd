@@ -39,5 +39,7 @@ public class TreatmentOrder {
     @Column(updatable = false)
     @CreationTimestamp
     private Date createtime;
+    private Long begintime;
+    private Long endtime;
     private Integer state;
 }

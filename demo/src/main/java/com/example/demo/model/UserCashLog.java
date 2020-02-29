@@ -25,6 +25,7 @@ public class UserCashLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long userid;
+    private Integer type;
 
     @Type(type="org.jadira.usertype.moneyandcurrency.joda.PersistentMoneyMinorAmount",
             parameters = {@org.hibernate.annotations.Parameter(name="currencyCode",value="CNY")})
