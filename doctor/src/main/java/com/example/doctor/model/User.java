@@ -64,6 +64,10 @@ public class User implements Serializable {
 
     private String departmenttel;
 
+    @Type(type="org.jadira.usertype.moneyandcurrency.joda.PersistentMoneyMinorAmount",
+            parameters = {@org.hibernate.annotations.Parameter(name="currencyCode",value="CNY")})
+    private Money account;
+
 
 
 }

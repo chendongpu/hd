@@ -39,6 +39,7 @@ CREATE TABLE `hd_user` (
   `money` bigint(20) NOT NULL DEFAULT '0' COMMENT '诊金',
   `duration` int(11) NOT NULL DEFAULT '0' COMMENT '时长/分',
   `departmenttel` varchar(255) NOT NULL DEFAULT '' COMMENT '科室电话',
+  `account` bigint(20) NOT NULL DEFAULT '0' COMMENT '余额',
   PRIMARY KEY (`id`),
   KEY `idx_mobile` (`mobile`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户';
@@ -52,6 +53,8 @@ CREATE TABLE `hd_treatment_order` (
   `money` BIGINT(20) NOT NULL DEFAULT '0' COMMENT '诊金',
   `duration` INT(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '时长',
   `createtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `begintime` INT(20) NOT NULL DEFAULT '0' COMMENT '开始时间',
+  `endtime` INT(20) NOT NULL DEFAULT '0' COMMENT '结束时间',
   `state` INT(1) NOT NULL DEFAULT '0' COMMENT '0 未支付 1已支付 2已结束 3已评价',
   PRIMARY KEY (`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='接诊订单';
@@ -277,7 +280,10 @@ DROP TABLE IF EXISTS `hd_user_cash_log`;
 CREATE TABLE `hd_user_cash_log` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `userid` INT(11) NOT NULL DEFAULT '0' COMMENT '用户id',
+   `type` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0 提现 1到账',
   `money` INT(11) NOT NULL DEFAULT '0' COMMENT '提现金额',
+  `bank` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '银行',
+  `card` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '卡号',
   `createtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
   `state` int(1) NOT NULL DEFAULT '0' COMMENT '是否审核通过',
   PRIMARY KEY (`id`),

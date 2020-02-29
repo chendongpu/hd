@@ -261,16 +261,16 @@ insert into `hd_user_task_log` (`userid`, `taskid`, `title`, `point`, `createtim
 insert into `hd_user_task_log` (`userid`, `taskid`, `title`, `point`, `createtime`) values('1','1','马上签到，领取签到奖励10','10',now());
 insert into `hd_user_task_log` (`userid`, `taskid`, `title`, `point`, `createtime`) values('1','1','马上签到，领取签到奖励10','10',now());
 
-insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100092,now());
-insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100093,now());
-insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100094,now());
-insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100098,now());
-insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100099,now());
-insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100098,now());
-insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100097,now());
-insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100096,now());
-insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100095,now());
-insert into `hd_user_cash_log` (`userid`, `money`,  `createtime`) values('1',100094,now());
+insert into `hd_user_cash_log` (`userid`, `money`, `bank`, `card`,  `createtime`) values('21',100092,'北京银行','62312321312313',now());
+insert into `hd_user_cash_log` (`userid`, `money`, `bank`, `card`, `createtime`) values('21',100093,'北京银行','62312321312313',now());
+insert into `hd_user_cash_log` (`userid`, `money`, `bank`, `card`, `createtime`) values('21',100094,'北京银行','62312321312313',now());
+insert into `hd_user_cash_log` (`userid`, `money`, `bank`, `card`, `createtime`) values('21',100098,'北京银行','62312321312313',now());
+insert into `hd_user_cash_log` (`userid`, `money`, `bank`, `card`, `createtime`) values('21',100099,'北京银行','62312321312313',now());
+insert into `hd_user_cash_log` (`userid`, `money`, `bank`, `card`, `createtime`) values('21',100098,'北京银行','62312321312313',now());
+insert into `hd_user_cash_log` (`userid`, `money`, `bank`, `card`, `createtime`) values('21',100097,'北京银行','62312321312313',now());
+insert into `hd_user_cash_log` (`userid`, `money`, `bank`, `card`, `createtime`) values('21',100096,'北京银行','62312321312313',now());
+insert into `hd_user_cash_log` (`userid`, `money`, `bank`, `card`, `createtime`) values('21',100095,'北京银行','62312321312313',now());
+insert into `hd_user_cash_log` (`userid`, `money`, `bank`, `card`, `createtime`) values('21',100094,'北京银行','62312321312313',now());
 
 
 insert  into `hd_user_article_comment`(`userid`,`articleid`,`comment`,`createtime`,`state`) values (1,1,'文章写的很棒！',now(),0);
