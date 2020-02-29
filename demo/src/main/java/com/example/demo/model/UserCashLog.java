@@ -30,6 +30,9 @@ public class UserCashLog {
             parameters = {@org.hibernate.annotations.Parameter(name="currencyCode",value="CNY")})
     private Money money;
 
+    private String bank;
+    private String card;
+
     @Column(updatable = false)
     @CreationTimestamp
     private Date createtime;

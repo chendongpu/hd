@@ -39,6 +39,7 @@ CREATE TABLE `hd_user` (
   `money` bigint(20) NOT NULL DEFAULT '0' COMMENT '诊金',
   `duration` int(11) NOT NULL DEFAULT '0' COMMENT '时长/分',
   `departmenttel` varchar(255) NOT NULL DEFAULT '' COMMENT '科室电话',
+  `account` bigint(20) NOT NULL DEFAULT '0' COMMENT '余额',
   PRIMARY KEY (`id`),
   KEY `idx_mobile` (`mobile`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户';
@@ -278,6 +279,8 @@ CREATE TABLE `hd_user_cash_log` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `userid` INT(11) NOT NULL DEFAULT '0' COMMENT '用户id',
   `money` INT(11) NOT NULL DEFAULT '0' COMMENT '提现金额',
+  `bank` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '银行',
+  `card` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '卡号',
   `createtime` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
   `state` int(1) NOT NULL DEFAULT '0' COMMENT '是否审核通过',
   PRIMARY KEY (`id`),
