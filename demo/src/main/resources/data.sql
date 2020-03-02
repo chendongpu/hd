@@ -1,3 +1,6 @@
+insert into hd_admin (username, password,createtime) values ('admin', 'e10adc3949ba59abbe56e057f20f883e',now());
+
+
 insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('儿科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
 insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('妇产科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());
 insert  into `hd_doctor_department`(`title`,`img`,`createtime`) values ('内科','/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg',now());

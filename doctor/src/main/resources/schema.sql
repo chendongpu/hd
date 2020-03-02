@@ -1,6 +1,17 @@
 USE `test`;
 
 
+DROP TABLE IF EXISTS `hd_admin`;
+CREATE TABLE `hd_admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL DEFAULT '' COMMENT '用户名',
+  `password` varchar(32) NOT NULL DEFAULT '' COMMENT '密码',
+  `createtime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='管理员';
+
+
 DROP TABLE IF EXISTS `hd_doctor_department`;
 CREATE TABLE `hd_doctor_department` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
