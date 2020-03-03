@@ -55,6 +55,10 @@ public class UserController {
             throw new BizException("-1","登录失败,用户不存在");
         }
 
+        if (!(userOptional.get().getIsblack()==1)) {
+            throw new BizException("-1","登录失败,账号已禁用");
+        }
+
         User userForBase = userOptional.get();
 
         if (!userForBase.getPassword().equals(MD5Utils.stringToMD5(user.getPassword()))) {

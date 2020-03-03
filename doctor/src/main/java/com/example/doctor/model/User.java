@@ -53,6 +53,7 @@ public class User implements Serializable {
 
 
     private Integer isdoctor;
+    private Integer isdelete;
     private Long department;
     private String hospital;
     private String level;

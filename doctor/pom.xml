@@ -87,7 +87,7 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.2.61</version>
 		</dependency>
-		
+
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>

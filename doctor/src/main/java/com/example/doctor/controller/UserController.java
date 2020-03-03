@@ -57,6 +57,10 @@ public class UserController {
             throw new BizException("-1","登录失败,用户不存在");
         }
 
+        if (!(userOptional.get().getIsblack()==1)) {
+            throw new BizException("-1","登录失败,账号已禁用");
+        }
+
         if (!(userOptional.get().getIsdoctor()==1)) {
             throw new BizException("-1","登录失败,账号为用户账号");
         }

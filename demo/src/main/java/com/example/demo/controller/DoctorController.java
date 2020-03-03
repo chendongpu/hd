@@ -48,7 +48,7 @@ public class DoctorController {
         Pageable pageable = PageRequest.of(page - 1,limit,sort);
 
 
-        User doctor = User.builder().isdoctor(1).build();
+        User doctor = User.builder().isdoctor(1).isdelete(0).build();
         JSONObject jsonObject = new JSONObject();
         Page<User> pageUser = userService.allDoctor(doctor,pageable);
 
@@ -90,7 +90,7 @@ public class DoctorController {
         Pageable pageable = PageRequest.of(page - 1,limit,sort);
 
 
-        User doctor = User.builder().isdoctor(1).build();
+        User doctor = User.builder().isdoctor(1).isdelete(0).build();
         JSONObject jsonObject = new JSONObject();
 
         Page<User> pageUser;

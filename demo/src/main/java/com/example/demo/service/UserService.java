@@ -35,14 +35,14 @@ public class UserService {
 
     public Optional<User> findByUsername(String username){
         ExampleMatcher matcher=ExampleMatcher.matching().withMatcher("username",exact().ignoreCase());
-        Optional<User> user =userRepository.findOne(Example.of(User.builder().username(username).build(),matcher));
+        Optional<User> user =userRepository.findOne(Example.of(User.builder().username(username).isdelete(0).build(),matcher));
         log.info("User Found:{}",user);
         return user;
     }
 
     public Optional<User> findByMobile(String mobile){
         ExampleMatcher matcher=ExampleMatcher.matching().withMatcher("mobile",exact().ignoreCase());
-        Optional<User> user =userRepository.findOne(Example.of(User.builder().mobile(mobile).build(),matcher));
+        Optional<User> user =userRepository.findOne(Example.of(User.builder().mobile(mobile).isdelete(0).build(),matcher));
         log.info("User Found:{}",user);
         return user;
     }
@@ -96,6 +96,7 @@ public class UserService {
                 List<Predicate> list = new ArrayList<Predicate>();
 
                 list.add(cb.equal(root.get("isdoctor"), 1));
+                list.add(cb.equal(root.get("isdelete"), 0));
 
                 Predicate[] p = new Predicate[list.size()];
 

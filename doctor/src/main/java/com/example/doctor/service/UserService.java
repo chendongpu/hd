@@ -33,14 +33,14 @@ public class UserService {
 
     public Optional<User> findByUsername(String username){
         ExampleMatcher matcher= ExampleMatcher.matching().withMatcher("username",exact().ignoreCase());
-        Optional<User> user =userRepository.findOne(Example.of(User.builder().username(username).build(),matcher));
+        Optional<User> user =userRepository.findOne(Example.of(User.builder().username(username).isdelete(0).build(),matcher));
         log.info("User Found:{}",user);
         return user;
     }
 
     public Optional<User> findByMobile(String mobile){
         ExampleMatcher matcher= ExampleMatcher.matching().withMatcher("mobile",exact().ignoreCase());
-        Optional<User> user =userRepository.findOne(Example.of(User.builder().mobile(mobile).build(),matcher));
+        Optional<User> user =userRepository.findOne(Example.of(User.builder().mobile(mobile).isdelete(0).build(),matcher));
         log.info("User Found:{}",user);
         return user;
     }
