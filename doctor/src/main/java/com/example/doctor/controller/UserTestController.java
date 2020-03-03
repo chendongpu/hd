@@ -9,6 +9,8 @@ import com.example.doctor.jwt.CheckToken;
 import com.example.doctor.model.UserTest;
 import com.example.doctor.service.UserService;
 import com.example.doctor.service.UserTestService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,6 +23,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Optional;
 
+
+@Api(value = "/user_test", tags = "医生测评")
 @Slf4j
 @RestController
 @RequestMapping("/user_test")
@@ -36,7 +40,8 @@ public class UserTestController {
     @Autowired
     HttpServletRequest request;
 
-    //添加测评
+
+    @ApiOperation(value = "添加测评", notes = "传入测评json")
     //{"title":"测评标题bbbaaxxa","content":"测评介绍bbaaxx"}
     @CheckToken
     @PostMapping("/create_user_test")
@@ -62,7 +67,8 @@ public class UserTestController {
     }
 
 
-    //删除测评
+
+    @ApiOperation(value = "删除测评", notes = "传入测评id")
     @CheckToken
     @GetMapping(value = "/remove_user_test",params = "id")
     public ResultBody removeUserTest(@RequestParam Long id) {
@@ -76,7 +82,8 @@ public class UserTestController {
     }
 
 
-    //修改测评
+
+    @ApiOperation(value = "修改测评", notes = "可以修改测评标题、内容")
     //{"title":"测评标题xxx","content":"测评介绍xxx","id":5}
     @CheckToken
     @PostMapping(value = "/update_user_test")
@@ -98,7 +105,8 @@ public class UserTestController {
         return ResultBody.success("测评修改成功");
     }
 
-    //查询测评
+
+    @ApiOperation(value = "查询测评", notes = "limit表示每次查几条 page表示第几页")
     @CheckToken
     @PostMapping(value = "/all_user_test",params = "limit")
     public ResultBody allUserTest(Integer limit,Integer page){
@@ -122,7 +130,8 @@ public class UserTestController {
 
     }
 
-    //测评详情
+
+    @ApiOperation(value = "测评详情", notes = "传入测评id")
     @CheckToken
     @GetMapping(value = "/one_user_test",params = "id")
     public ResultBody oneUserTest(@RequestParam Long id){

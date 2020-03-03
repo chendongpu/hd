@@ -8,6 +8,8 @@ import com.example.doctor.jwt.CheckToken;
 import com.example.doctor.model.UserCashLog;
 import com.example.doctor.service.UserCashLogService;
 import com.example.doctor.handler.BizException;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.NotEmpty;
 import java.util.Optional;
 
+@Api(value = "/user_cash_log", tags = "医生提现记录(也包括入账记录)")
 @Slf4j
 @RestController
 @RequestMapping("/user_cash_log")
@@ -35,10 +38,9 @@ public class UserCashLogController {
     @Autowired
     HttpServletRequest request;
 
-    //添加提现记录
-    //传入参数 money  为 CNY 1000.92
-    //传入参数 bank  为 中国银行
-    //传入参数 card  为 62312321312313
+
+
+    @ApiOperation(value = "添加提现记录", notes = "传入参数 money  为 CNY 1000.92 ，传入参数 bank  为 中国银行，传入参数 card  为 62312321312313")
     @CheckToken
     @PostMapping(value = "/create_user_cash_log")
     public ResultBody createUserCashLog(@NotEmpty @RequestParam("money")  Money money,@NotEmpty @RequestParam("bank") String bank,@NotEmpty  @RequestParam("card")String card) {
@@ -66,7 +68,7 @@ public class UserCashLogController {
 
 
 
-    //删除提现记录
+    @ApiOperation(value = "删除提现记录", notes = "传入记录id")
     @CheckToken
     @GetMapping(value = "/remove_user_cash_log",params = "id")
     public ResultBody removeUserCashLog(@RequestParam Long id) {
@@ -82,7 +84,7 @@ public class UserCashLogController {
 
     
 
-    //查询提现记录
+    @ApiOperation(value = "查询提现记录", notes = "limit表示每次查几条 page表示第几页")
     @CheckToken
     @PostMapping(value = "/all_user_cash_log",params = "limit")
     public ResultBody allUserCashLog(Integer limit,Integer page){

@@ -11,6 +11,8 @@ import com.example.doctor.jwt.LoginToken;
 import com.example.doctor.model.User;
 import com.example.doctor.service.UserService;
 import com.example.doctor.util.MD5Utils;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Optional;
 
+
+@Api(value = "/user", tags = "医生接口")
 @Slf4j
 @RestController
 @RequestMapping("/user")
@@ -29,8 +33,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    //登录
+
     //{"mobile":"15057190660","password":"123456"}
+    @ApiOperation(value = "医生登录", notes = "医生用户名或者手机号登录")
     @PostMapping("/login")
     @LoginToken
     public ResultBody login(@RequestBody @Valid User user) {
@@ -70,14 +75,15 @@ public class UserController {
 
     }
 
-    //查看个人信息
+    @ApiOperation(value = "检查登录", notes = "没有实际作用")
     @CheckToken
-    @GetMapping("/getMessage")
-    public ResultBody getMessage() {
+    @GetMapping("/check_login")
+    public ResultBody checkLogin() {
         return ResultBody.success("你已通过验证");
     }
 
-    //注册
+
+    @ApiOperation(value = "医生注册", notes = "医生手机号加密码注册")
     //{"mobile":"15057190640","password":"123456"}
     @PostMapping("/register")
     public ResultBody register(  @Valid @RequestBody NewUserRequest newUser){
@@ -94,6 +100,7 @@ public class UserController {
     @Autowired
     HttpServletRequest request;
 
+    @ApiOperation(value = "医生设置头像、昵称、简介", notes = "每一项都是非必填")
     @CheckToken
     @PostMapping("/set")
     public ResultBody set(@Nullable @RequestParam("avatar") String avatar, @Nullable @RequestParam("nickname") String nickname, @Nullable @RequestParam("content") String content){
@@ -126,6 +133,7 @@ public class UserController {
 
     }
 
+    @ApiOperation(value = "医生设置个人信息包括性别、省、市、医院、科室、职称、诊金、科室电话", notes = "每一项都是非必填")
     @CheckToken
     @PostMapping("/info")
     public ResultBody info(@Nullable @RequestParam("gender") Integer gender,

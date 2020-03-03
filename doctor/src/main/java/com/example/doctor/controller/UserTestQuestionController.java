@@ -9,6 +9,8 @@ import com.example.doctor.handler.ResultBody;
 import com.example.doctor.jwt.CheckToken;
 import com.example.doctor.model.*;
 import com.example.doctor.service.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
+@Api(value = "/user_test_question", tags = "医生测评问题")
 @Slf4j
 @RestController
 @RequestMapping("/user_test_question")
@@ -44,6 +48,7 @@ public class UserTestQuestionController {
 
     //添加用户测评问题
     //questionids 传入1,2,3
+    @ApiOperation(value = "添加用户测评问题", notes = "testid 为测评id，questionids 为问题id")
     @CheckToken
     @PostMapping("/create_user_test_question")
     public ResultBody createUserTestQuestion(@RequestParam Long testid, @RequestParam Long[] questionids) {
@@ -85,7 +90,8 @@ public class UserTestQuestionController {
         return ResultBody.success(saved) ;
     }
 
-    //删除用户测评问题
+
+    @ApiOperation(value = "删除用户测评问题", notes = "testid 为测评id，questionid 为问题id，传入一个删除一个")
     @CheckToken
     @PostMapping("/remove_user_test_question")
     public ResultBody removeUserTestQuestion(@RequestParam Long testid, @RequestParam Long questionid){
@@ -120,7 +126,8 @@ public class UserTestQuestionController {
         return uqr;
     }
 
-    //查询测评问题列表
+
+    @ApiOperation(value = "查询测评问题详情", notes = "testid 为测评id")
     @CheckToken
     @PostMapping(value = "/one_user_test_question",params = "testid")
     public ResultBody oneUserTestQuestion(@NotNull Long testid){

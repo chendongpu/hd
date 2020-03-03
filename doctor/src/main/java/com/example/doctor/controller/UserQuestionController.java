@@ -12,6 +12,8 @@ import com.example.doctor.model.UserQuestionChoice;
 import com.example.doctor.service.UserQuestionChoiceService;
 import com.example.doctor.service.UserQuestionService;
 import com.example.doctor.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,6 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
+@Api(value = "/user_question", tags = "测评问题接口")
 @Slf4j
 @RestController
 @RequestMapping("/user_question")
@@ -44,7 +48,7 @@ public class UserQuestionController {
     @Autowired
     HttpServletRequest request;
 
-    //添加问题
+    @ApiOperation(value = "添加测评问题", notes = "NewUserQuestionRequest 为问题和问题选项的json")
     //{"title":"你选择网购的主要原因?","type":0,"score":10,"userQuestionChoices":[{"choice":"方便快捷"},{"choice":"品类齐全"},{"choice":"价格便宜"}]}
     @CheckToken
     @PostMapping("/create_user_question")
@@ -92,7 +96,8 @@ public class UserQuestionController {
     }
 
 
-    //删除问题
+
+    @ApiOperation(value = "删除问题", notes = "传入要删除的测评问题的id")
     @CheckToken
     @GetMapping(value = "/remove_user_question",params = "id")
     public ResultBody removeUserQuestion(@RequestParam Long id) {
@@ -109,7 +114,8 @@ public class UserQuestionController {
 
 
 
-    //查询问题
+
+    @ApiOperation(value = "查询问题", notes = "limit表示每次查几条 page表示第几页")
     @CheckToken
     @PostMapping(value = "/all_user_question",params = "limit")
     public ResultBody allUserQuestion(Integer limit,Integer page){
@@ -142,6 +148,7 @@ public class UserQuestionController {
 
     }
 
+    @ApiOperation(value = "查询问题详情", notes = "传入测评问题id")
     @CheckToken
     @GetMapping(value = "/one_user_question",params = "id")
     public ResultBody oneUserQuestion(@RequestParam Long id){
