@@ -53,10 +53,12 @@ public class User implements Serializable {
 
 
     private Integer isdoctor;
+    private Integer isdelete;
     private Long department;
     private String hospital;
     private String level;
     private String goodat;
+
     @Type(type="org.jadira.usertype.moneyandcurrency.joda.PersistentMoneyMinorAmount",
             parameters = {@org.hibernate.annotations.Parameter(name="currencyCode",value="CNY")})
     private Money money;

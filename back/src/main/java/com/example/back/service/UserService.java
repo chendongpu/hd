@@ -35,14 +35,14 @@ public class UserService {
 
     public Optional<User> findByUsername(String username){
         ExampleMatcher matcher= ExampleMatcher.matching().withMatcher("username",exact().ignoreCase());
-        Optional<User> user =userRepository.findOne(Example.of(User.builder().username(username).build(),matcher));
+        Optional<User> user =userRepository.findOne(Example.of(User.builder().username(username).isdelete(0).build(),matcher));
         log.info("User Found:{}",user);
         return user;
     }
 
     public Optional<User> findByMobile(String mobile){
         ExampleMatcher matcher= ExampleMatcher.matching().withMatcher("mobile",exact().ignoreCase());
-        Optional<User> user =userRepository.findOne(Example.of(User.builder().mobile(mobile).build(),matcher));
+        Optional<User> user =userRepository.findOne(Example.of(User.builder().mobile(mobile).isdelete(0).build(),matcher));
         log.info("User Found:{}",user);
         return user;
     }
@@ -70,10 +70,18 @@ public class UserService {
         userRepository.save(newUser);
     }
 
+    public void removeUser(Long id){
+        Optional<User> userOptional =userRepository.findById(id);
+        User user = userOptional.get();
+        user.setIsdelete(1);
+        userRepository.save(user);
+    }
+
     public Page<User> allUser(User user, Pageable pageable) {
         Example<User> example = Example.of(user);
         return userRepository.findAll(example,pageable);
     }
+
 
     @Autowired
     private UserAddressRepository userAddressRepository;
@@ -99,6 +107,7 @@ public class UserService {
                 List<Predicate> list = new ArrayList<Predicate>();
 
                 list.add(cb.equal(root.get("isdoctor"), 0));
+                list.add(cb.equal(root.get("isdelete"), 0));
 
                 Predicate[] p = new Predicate[list.size()];
 
@@ -157,6 +166,7 @@ public class UserService {
                 List<Predicate> list = new ArrayList<Predicate>();
 
                 list.add(cb.equal(root.get("isdoctor"), 1));
+                list.add(cb.equal(root.get("isdelete"), 0));
 
                 Predicate[] p = new Predicate[list.size()];
 

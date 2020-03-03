@@ -9,12 +9,15 @@ import com.example.back.jwt.CheckToken;
 import com.example.back.jwt.JwtUtil;
 import com.example.back.model.Admin;
 import com.example.back.util.MD5Utils;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Optional;
 
+@Api(value = "/admin", tags = "管理员接口")
 @Slf4j
 @RestController
 @RequestMapping("/admin")
@@ -23,8 +26,9 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    //登录
-    //{"admin":"admin","password":"123456"}
+
+    @ApiOperation(value = "管理员登录", notes = "管理员用户名密码登录")
+    //{"username":"admin","password":"123456"}
     @PostMapping("/login")
     @LoginToken
     public ResultBody login(@RequestBody @Valid Admin admin) {
@@ -56,10 +60,11 @@ public class AdminController {
 
     }
 
-    //查看管理员信息
+
+    @ApiOperation(value = "检查管理员登录", notes = "没有实际作用")
     @CheckToken
-    @GetMapping("/getMessage")
-    public ResultBody getMessage() {
+    @GetMapping("/check_login")
+    public ResultBody checkLogin() {
         return ResultBody.success("你已通过验证");
     }
 
