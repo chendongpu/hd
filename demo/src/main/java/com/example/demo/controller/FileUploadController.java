@@ -4,6 +4,8 @@ import com.example.demo.handler.BizException;
 import com.example.demo.handler.ResultBody;
 import com.example.demo.util.FileUtil;
 import com.google.common.collect.Lists;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
@@ -15,6 +17,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
+@Api(value = "/file", tags = "上传文件")
 @Slf4j
 @RestController
 @RequestMapping("/file")
@@ -23,7 +26,7 @@ public class FileUploadController {
     @Autowired
     HttpServletRequest request;
 
-    //上传
+    @ApiOperation(value = "用户端上传图片", notes = "图片必须是jpg、jpeg、png、bmp、gif格式")
     @PostMapping("/uploadimg")
     public ResultBody uploadImg(@Nullable  @RequestParam("img") MultipartFile file) {
         // 首先校验图片格式
@@ -69,7 +72,7 @@ public class FileUploadController {
 
 
 
-    //上传
+    @ApiOperation(value = "用户端上传视频", notes = "视频必须是mp4、flv、avi、rm、rmvb、wmv格式")
     @PostMapping("/uploadmov")
     public ResultBody uploadMov(@Nullable @RequestParam("mov") MultipartFile mov) {
 

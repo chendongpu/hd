@@ -9,6 +9,8 @@ import com.example.demo.jwt.CheckToken;
 import com.example.demo.model.UserMsg;
 import com.example.demo.service.UserMsgService;
 import com.example.demo.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Optional;
 
+@Api(value = "/user_msg", tags = "用户消息")
 @Slf4j
 @RestController
 @RequestMapping("/user_msg")
@@ -35,7 +38,8 @@ public class UserMsgController {
     @Autowired
     HttpServletRequest request;
 
-    //添加用户消息
+
+    @ApiOperation(value = "添加用户消息", notes = "传入用户消息json")
     //{"msg":"密码修改成功","type":0,"otherid":0}
     @CheckToken
     @PostMapping("/create_user_msg")
@@ -58,7 +62,8 @@ public class UserMsgController {
     }
 
 
-    //删除用户消息
+
+    @ApiOperation(value = "删除用户消息", notes = "传入用户消息id")
     @CheckToken
     @GetMapping(value = "/remove_user_msg",params = "id")
     public ResultBody removeUserMsg(@RequestParam  Long id) {
@@ -72,7 +77,8 @@ public class UserMsgController {
     }
 
 
-    //修改用户消息
+
+    @ApiOperation(value = "修改用户消息", notes = "传入用户消息json")
     //{"msg":"密码修改成功","type":0,"otherid":0,"isread":1,"id":1}
     @CheckToken
     @PostMapping(value = "/update_user_msg")
@@ -93,7 +99,8 @@ public class UserMsgController {
         return ResultBody.success("用户消息修改成功");
     }
 
-    //查询用户消息
+
+    @ApiOperation(value = "查询用户消息", notes = "limit表示每次查几条 page表示第几页")
     @CheckToken
     @PostMapping(value = "/all_user_msg",params = "limit")
     public ResultBody allUserMsg(Integer limit,Integer page){

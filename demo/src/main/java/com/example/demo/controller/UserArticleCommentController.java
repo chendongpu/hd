@@ -11,6 +11,8 @@ import com.example.demo.model.UserArticle;
 import com.example.demo.model.UserArticleComment;
 import com.example.demo.service.UserArticleCommentService;
 import com.example.demo.service.UserArticleService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Api(value = "/user_article_comment", tags = "用户文章评论")
 @Slf4j
 @RestController
 @RequestMapping("/user_article_comment")
@@ -39,8 +42,8 @@ public class UserArticleCommentController {
     @Autowired
     HttpServletRequest request;
 
+    @ApiOperation(value = "添加文章评论", notes = "传入文章评论json")
     //{"articleid":1,"comment":"文章写的很棒！"}
-    //添加任务文章评论
     @CheckToken
     @PostMapping(value = "/create_user_article_comment")
     public ResultBody createUserArticleComment(@Valid @RequestBody NewUserArticleCommentRequest newUserArticleCommentRequest) {
@@ -70,8 +73,8 @@ public class UserArticleCommentController {
     }
 
 
+    @ApiOperation(value = "添加文章评论回复", notes = "传入文章评论回复json")
     //{"articleid":1,"comment":"谢谢！","pid":10}
-    //添加任务文章评论
     @CheckToken
     @PostMapping(value = "/create_user_article_reply")
     public ResultBody createUserArticleReply(@Valid @RequestBody NewUserArticleCommentRequest newUserArticleCommentRequest) {
@@ -112,8 +115,7 @@ public class UserArticleCommentController {
 
 
 
-
-    //删除任务文章评论
+    @ApiOperation(value = "删除文章评论", notes = "传入文章评论id")
     @CheckToken
     @GetMapping(value = "/remove_user_article_comment",params = "id")
     public ResultBody removeUserArticleComment(@RequestParam  Long id) {
@@ -129,7 +131,7 @@ public class UserArticleCommentController {
 
     
 
-    //查询任务文章评论
+    @ApiOperation(value = "查询文章评论", notes = "limit表示每次查几条 page表示第几页")
     @CheckToken
     @PostMapping(value = "/all_user_article_comment",params = "limit")
     public ResultBody allUserArticleComment(Integer limit,Integer page){

@@ -10,6 +10,8 @@ import com.example.demo.model.UserAddress;
 import com.example.demo.model.UserConcern;
 import com.example.demo.service.UserConcernService;
 import com.example.demo.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Optional;
 
+@Api(value = "/user_concern", tags = "用户关注接口")
 @Slf4j
 @RestController
 @RequestMapping("/user_concern")
@@ -35,7 +38,9 @@ public class UserConcernController {
     @Autowired
     HttpServletRequest request;
 
-    //添加用户关注
+
+
+    @ApiOperation(value = "添加用户关注", notes = "传入关注的用户的id")
     @CheckToken
     @PostMapping("/create_user_concern")
     public ResultBody createUserConcern( @RequestParam Integer concernid) {
@@ -59,7 +64,8 @@ public class UserConcernController {
         return ResultBody.success(saved) ;
     }
 
-    //取消用户关注
+
+    @ApiOperation(value = "取消用户关注", notes = "传入取消关注的用户的id")
     @CheckToken
     @PostMapping("/remove_user_concern")
     public ResultBody removeUserConcern(@RequestParam Integer concernid){
@@ -76,7 +82,8 @@ public class UserConcernController {
         return ResultBody.success("取消关注成功") ;
     }
 
-    //关注列表
+
+    @ApiOperation(value = "查询用户关注列表", notes = "limit表示每次查几条 page表示第几页")
     @CheckToken
     @PostMapping(value = "/all_user_concern",params = "limit")
     public ResultBody allUserConcern(Integer limit,Integer page){
@@ -99,7 +106,8 @@ public class UserConcernController {
         return ResultBody.success(jsonObject);
     }
 
-    //粉丝列表
+
+    @ApiOperation(value = "查询用户粉丝列表", notes = "limit表示每次查几条 page表示第几页")
     @CheckToken
     @PostMapping(value = "/all_fans",params = "limit")
     public ResultBody allFans(Integer limit,Integer page){

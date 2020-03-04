@@ -8,6 +8,8 @@ import com.example.demo.handler.ResultBody;
 import com.example.demo.model.PointTask;
 import com.example.demo.service.PointTaskService;
 import com.example.demo.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Optional;
 
+@Api(value = "/point_task", tags = "积分任务接口")
 @Slf4j
 @RestController
 @RequestMapping("/point_task")
@@ -34,7 +37,8 @@ public class PointTaskController {
     @Autowired
     HttpServletRequest request;
 
-    //添加积分任务
+
+    @ApiOperation(value = "添加积分任务", notes = "积分任务json")
     //{"title":"马上签到，领取签到奖励20","type":0,"point":10}
     @PostMapping("/create_point_task")
     public ResultBody createPointTask( @Valid @RequestBody NewPointTaskRequest newPointTaskReq) {
@@ -57,7 +61,8 @@ public class PointTaskController {
     }
 
 
-    //删除积分任务
+
+    @ApiOperation(value = "删除积分任务", notes = "删除积分任务id")
     @GetMapping(value = "/remove_point_task",params = "id")
     public ResultBody removePointTask(@RequestParam  Long id) {
         Optional<PointTask> pointTaskOption=pointTaskService.findPointTaskById(id);
@@ -70,7 +75,8 @@ public class PointTaskController {
     }
 
 
-    //修改积分任务
+
+    @ApiOperation(value = "修改积分任务", notes = "积分任务json")
     //{"title":"马上签到，领取签到奖励20","type":0,"point":10,id:1}
     @PostMapping(value = "/update_point_task")
     public ResultBody updatePointTask(@Valid @RequestBody NewPointTaskRequest newPointTaskReq){
@@ -92,7 +98,8 @@ public class PointTaskController {
         return ResultBody.success("积分任务修改成功");
     }
 
-    //查询积分任务
+
+    @ApiOperation(value = "查询积分任务", notes = "\"limit表示每次查几条 page表示第几页")
     @PostMapping(value = "/all_point_task",params = "limit")
     public ResultBody allPointTask(Integer limit,Integer page){
 

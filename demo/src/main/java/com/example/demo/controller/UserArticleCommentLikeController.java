@@ -10,6 +10,8 @@ import com.example.demo.model.UserArticleCommentLike;
 import com.example.demo.service.UserArticleCommentLikeService;
 import com.example.demo.service.UserArticleCommentService;
 import com.example.demo.service.UserArticleService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
+@Api(value = "/user_article_comment_like", tags = "用户文章评论点赞")
 @Slf4j
 @RestController
 @RequestMapping("/user_article_comment_like")
@@ -38,7 +41,8 @@ public class UserArticleCommentLikeController {
     @Autowired
     HttpServletRequest request;
 
-    //添加文章评论点赞记录
+
+    @ApiOperation(value = "添加文章评论点赞记录", notes = "articleid文章id，commentid评论id")
     @CheckToken
     @PostMapping("/create_user_article_comment_like")
     public ResultBody createUserArticleCommentLike( @RequestParam Long articleid,@RequestParam Long commentid) {
@@ -75,7 +79,8 @@ public class UserArticleCommentLikeController {
         return ResultBody.success(saved) ;
     }
 
-    //删除文章评论点赞记录
+
+    @ApiOperation(value = "删除文章评论点赞记录", notes = "articleid文章id，commentid评论id")
     @CheckToken
     @PostMapping("/remove_user_article_comment_like")
     public ResultBody removeUserArticleCommentLike(@RequestParam Long articleid,@RequestParam Long commentid){

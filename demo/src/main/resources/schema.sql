@@ -7,7 +7,7 @@ CREATE TABLE `hd_admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL DEFAULT '' COMMENT '用户名',
   `password` varchar(32) NOT NULL DEFAULT '' COMMENT '密码',
-  `createtime` datetime OT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
+  `createtime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
   PRIMARY KEY (`id`),
   KEY `idx_username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='管理员';

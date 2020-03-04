@@ -7,6 +7,8 @@ import com.example.demo.handler.ResultBody;
 import com.example.demo.jwt.CheckToken;
 import com.example.demo.model.*;
 import com.example.demo.service.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
+@Api(value = "/user_task_log", tags = "任务完成记录")
 @Slf4j
 @RestController
 @RequestMapping("/user_task_log")
@@ -33,7 +36,8 @@ public class UserTaskLogController {
     @Autowired
     HttpServletRequest request;
 
-    //添加任务完成记录
+
+    @ApiOperation(value = "添加任务完成记录", notes = "传入任务id")
     @CheckToken
     @PostMapping(value = "/create_user_task_log",params = "id")
     public ResultBody createUserTaskLog( @RequestParam  Long id) {
@@ -65,7 +69,8 @@ public class UserTaskLogController {
 
 
 
-    //删除任务完成记录
+
+    @ApiOperation(value = "删除任务完成记录", notes = "传入任务id")
     @CheckToken
     @GetMapping(value = "/remove_user_task_log",params = "id")
     public ResultBody removeUserTaskLog(@RequestParam  Long id) {
@@ -81,7 +86,8 @@ public class UserTaskLogController {
 
     
 
-    //查询任务完成记录
+
+    @ApiOperation(value = "查询任务完成记录", notes = "limit表示每次查几条 page表示第几页")
     @CheckToken
     @PostMapping(value = "/all_user_task_log",params = "limit")
     public ResultBody allUserTaskLog(Integer limit,Integer page){

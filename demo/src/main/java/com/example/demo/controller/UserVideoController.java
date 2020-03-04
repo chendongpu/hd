@@ -11,6 +11,8 @@ import com.example.demo.model.UserVideo;
 import com.example.demo.service.UserService;
 import com.example.demo.service.UserVideoService;
 import com.fasterxml.jackson.annotation.JsonFilter;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Optional;
 
+@Api(value = "/user_video", tags = "用户视频接口")
 @Slf4j
 @RestController
 @RequestMapping("/user_video")
@@ -37,7 +40,8 @@ public class UserVideoController {
     @Autowired
     HttpServletRequest request;
 
-    //添加视频
+
+    @ApiOperation(value = "添加视频", notes = "传入用户视频json")
     //{"title":"野生动物","img":"/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg","video":"/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv"}
     @CheckToken
     @PostMapping("/create_user_video")
@@ -66,7 +70,7 @@ public class UserVideoController {
     }
 
 
-    //删除视频
+    @ApiOperation(value = "删除视频", notes = "传入用户视频id")
     @CheckToken
     @GetMapping(value = "/remove_user_video",params = "id")
     public ResultBody removeUserVideo(@RequestParam  Long id) {
@@ -80,7 +84,7 @@ public class UserVideoController {
     }
 
 
-    //修改视频
+    @ApiOperation(value = "修改视频", notes = "传入用户视频json")
     //{"title":"野生动物01","img":"/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg","video":"/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv","id":2}
     @CheckToken
     @PostMapping(value = "/update_user_video")
@@ -103,7 +107,8 @@ public class UserVideoController {
         return ResultBody.success("视频修改成功");
     }
 
-    //查询视频
+
+    @ApiOperation(value = "查询用户视频", notes = "limit表示每次查几条 page表示第几页")
     @CheckToken
     @PostMapping(value = "/all_user_video",params = "limit")
     public ResultBody allUserVideo(Integer limit,Integer page){
@@ -127,6 +132,7 @@ public class UserVideoController {
 
     }
 
+    @ApiOperation(value = "查询用户视频详情", notes = "传入视频id")
     @CheckToken
     @GetMapping(value = "/one_user_video",params = "id")
     public ResultBody oneUserVideo(@RequestParam Long id){

@@ -10,6 +10,8 @@ import com.example.demo.model.User;
 import com.example.demo.service.TreatmentOrderService;
 import com.example.demo.service.UserService;
 import com.example.demo.util.OrderIdUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,6 +25,8 @@ import javax.validation.constraints.NotNull;
 import java.util.Optional;
 import java.util.UUID;
 
+
+@Api(value = "/treatment_order", tags = "用户接诊订单")
 @Slf4j
 @RestController
 @RequestMapping("/treatment_order")
@@ -37,7 +41,8 @@ public class TreatmentOrderController {
     @Autowired
     HttpServletRequest request;
 
-    //添加接诊订单
+
+    @ApiOperation(value = "添加接诊订单", notes = "传入接诊医生id")
     @CheckToken
     @PostMapping("/create_treatment_order")
     public ResultBody createTreatmentOrder( @NotNull Long id) {
@@ -71,6 +76,7 @@ public class TreatmentOrderController {
 
 
     //查询接诊订单
+    @ApiOperation(value = "查询用户接诊订单", notes = "limit表示每次查几条 page表示第几页")
     @CheckToken
     @PostMapping(value = "/all_treatment_order",params = "limit")
     public ResultBody allTreatmentOrder(Integer limit,Integer page){

@@ -9,6 +9,8 @@ import com.example.demo.model.UserArticle;
 import com.example.demo.model.UserArticleRead;
 import com.example.demo.service.UserArticleReadService;
 import com.example.demo.service.UserArticleService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,6 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
+
+@Api(value = "/user_article_read", tags = "用户文章阅读记录")
 @Slf4j
 @RestController
 @RequestMapping("/user_article_read")
@@ -36,7 +40,8 @@ public class UserArticleReadController {
     @Autowired
     HttpServletRequest request;
 
-    //添加文章阅读记录
+
+    @ApiOperation(value = "添加文章阅读记录", notes = "传入文章id")
     @CheckToken
     @PostMapping("/create_user_article_read")
     public ResultBody createUserArticleRead( @RequestParam Integer aid) {
@@ -60,7 +65,8 @@ public class UserArticleReadController {
         return ResultBody.success(saved) ;
     }
 
-    //删除文章阅读
+
+    @ApiOperation(value = "删除文章阅读", notes = "传入文章id")
     @CheckToken
     @PostMapping("/remove_user_article_read")
     public ResultBody removeUserArticleRead(@RequestParam Integer aid){
@@ -77,7 +83,8 @@ public class UserArticleReadController {
         return ResultBody.success("删除阅读成功") ;
     }
 
-    //阅读列表
+
+    @ApiOperation(value = "查询文章阅读列表", notes = "limit表示每次查几条 page表示第几页")
     @CheckToken
     @PostMapping(value = "/all_user_article_read",params = "limit")
     public ResultBody allUserArticleRead(Integer limit,Integer page){

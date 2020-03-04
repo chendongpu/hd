@@ -11,19 +11,18 @@ import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.util.MD5Utils;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.text.html.Option;
 import javax.validation.Valid;
-import javax.validation.constraints.Null;
-import java.io.File;
 import java.util.Optional;
-import java.util.UUID;
 
+@Api(value = "/user", tags = "用户接口")
 @Slf4j
 @RestController
 @RequestMapping("/user")
@@ -32,7 +31,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    //登录
+    @ApiOperation(value = "用户登录", notes = "使用用户名或者手机号登录")
     //{"username":"apple","password":"123456"}
     //{"mobile":"15057190640","password":"123456"}
     @PostMapping("/login")
@@ -73,14 +72,14 @@ public class UserController {
 
     }
 
-    //查看个人信息
+    @ApiOperation(value = "检查登录", notes = "没有实际作用")
     @CheckToken
-    @GetMapping("/getMessage")
-    public ResultBody getMessage() {
+    @GetMapping("/check_login")
+    public ResultBody checkLogin() {
         return ResultBody.success("你已通过验证");
     }
 
-    //注册
+    @ApiOperation(value = "用户注册", notes = "使用手机号加密码注册")
     //{"mobile":"15057190640","password":"123456"}
     @PostMapping("/register")
     public ResultBody register(  @Valid @RequestBody NewUserRequest newUser){
@@ -97,6 +96,8 @@ public class UserController {
     @Autowired
     HttpServletRequest request;
 
+
+    @ApiOperation(value = "用户设置头像、昵称、简介", notes = "每一项都是非必填")
     @CheckToken
     @PostMapping("/set")
     public ResultBody set(@Nullable @RequestParam("avatar") String avatar, @Nullable @RequestParam("nickname") String nickname,@Nullable  @RequestParam("content") String content){

@@ -7,6 +7,8 @@ import com.example.demo.model.DoctorDepartment;
 import com.example.demo.model.User;
 import com.example.demo.service.DoctorDepartmentService;
 import com.example.demo.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Api(value = "/doctor", tags = "前台查询医生列表")
 @Slf4j
 @RestController
 @RequestMapping("/doctor")
@@ -36,7 +39,8 @@ public class DoctorController {
     HttpServletRequest request;
 
 
-    //查询医生列表
+
+    @ApiOperation(value = "查询所有医生", notes = "limit表示每次查几条 page表示第几页")
     @PostMapping(value = "/all_doctor",params = "limit")
     public ResultBody allDoctor(Integer limit,Integer page){
 
@@ -78,7 +82,8 @@ public class DoctorController {
 
     }
 
-    //查询医生列表
+
+    @ApiOperation(value = "根据关键字查询所有医生", notes = "limit表示每次查几条 page表示第几页keyword表示关键字")
     @PostMapping(value = "/find_doctor",params = "limit")
     public ResultBody findDoctor(Integer limit,Integer page,@Nullable String keyword){
 

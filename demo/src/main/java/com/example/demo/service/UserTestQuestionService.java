@@ -70,21 +70,29 @@ public class UserTestQuestionService {
             ids[i]=uc.getQuestionid();
             i++;
         }
-        Specification<UserQuestion> specification = new Specification<UserQuestion>() {
-            @Override
-            public Predicate toPredicate(Root<UserQuestion> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-                List<Predicate> list = new ArrayList<Predicate>();
-                CriteriaBuilder.In<Long> in = cb.in(root.get("id"));
-                for (Long id : ids) {
-                    in.value(id);
+        if(ids.length>0){
+            Specification<UserQuestion> specification = new Specification<UserQuestion>() {
+                @Override
+                public Predicate toPredicate(Root<UserQuestion> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                    List<Predicate> list = new ArrayList<Predicate>();
+                    CriteriaBuilder.In<Long> in = cb.in(root.get("id"));
+                    for (Long id : ids) {
+                        in.value(id);
+                    }
+
+                    list.add(in);
+                    Predicate[] p = new Predicate[list.size()];
+                    return cb.and(list.toArray(p));
                 }
-                list.add(in);
-                Predicate[] p = new Predicate[list.size()];
-                return cb.and(list.toArray(p));
-            }
-        };
-        List<UserQuestion> userQuestionList = userQuestionRepository.findAll(specification);
-        return userQuestionList;
+            };
+            List<UserQuestion> userQuestionList = userQuestionRepository.findAll(specification);
+            return userQuestionList;
+        }else{
+            return new ArrayList<>();
+        }
+
+
+
     }
 
 

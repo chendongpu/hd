@@ -4,11 +4,11 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-public
+
 @Getter
 @Setter
 @ToString
-class QuestionChoiceInput{
+public class QuestionChoiceInput{
 
     private Long questionid;
 

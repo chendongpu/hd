@@ -10,6 +10,8 @@ import com.example.demo.model.User;
 import com.example.demo.model.UserAddress;
 import com.example.demo.service.UserAddressService;
 import com.example.demo.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Optional;
 
+@Api(value = "/user_address", tags = "用户收货地址")
 @Slf4j
 @RestController
 @RequestMapping("/user_address")
@@ -36,7 +39,8 @@ public class UserAddressController {
     @Autowired
     HttpServletRequest request;
 
-    //添加用户地址
+
+    @ApiOperation(value = "添加用户地址", notes = "传入用户地址json")
     //{"realname":"陈东谱","mobile":"15057190640","province":"湖北省","city":"武穴市","area":"余川镇","address":"龟山村三组47号"}
     @CheckToken
     @PostMapping("/create_user_address")
@@ -67,7 +71,8 @@ public class UserAddressController {
     }
 
 
-    //删除用户地址
+
+    @ApiOperation(value = "删除用户地址", notes = "传入用户地址id")
     @CheckToken
     @GetMapping(value = "/remove_user_address",params = "id")
     public ResultBody removeUserAddress(@RequestParam  Long id) {
@@ -81,7 +86,8 @@ public class UserAddressController {
     }
 
 
-    //修改用户地址
+
+    @ApiOperation(value = "修改用户地址", notes = "传入用户地址json包含要修改的地址id")
     //{"realname":"陈东谱","mobile":"15057190640","province":"湖北省","city":"武穴市","area":"花桥镇","address":"龟山村三组47号","id":9}
     @CheckToken
     @PostMapping(value = "/update_user_address")
@@ -107,7 +113,8 @@ public class UserAddressController {
         return ResultBody.success("用户地址修改成功");
     }
 
-    //查询用户地址
+
+    @ApiOperation(value = "查询用户地址", notes = "limit表示每次查几条 page表示第几页")
     @CheckToken
     @PostMapping(value = "/all_user_address",params = "limit")
     public ResultBody allUserAddress(Integer limit,Integer page){

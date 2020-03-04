@@ -10,6 +10,8 @@ import com.example.demo.model.User;
 import com.example.demo.util.CheckSumBuilder;
 import com.example.demo.util.UUIDUtil;
 import com.google.common.collect.Lists;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.DefaultConnectionKeepAliveStrategy;
@@ -38,7 +40,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-
+@Api(value = "/im", tags = "对接云信接口")
 @Slf4j
 @RestController
 @RequestMapping("/im")
@@ -89,7 +91,8 @@ public class IMController {
         return headers;
     }
 
-    //创建用户
+
+    @ApiOperation(value = "创建用户", notes = "accid 用户名 name 昵称")
     //accid:apple
     //name:张三
     @CheckToken
@@ -119,7 +122,8 @@ public class IMController {
     }
 
 
-    //获取用户名片
+
+    @ApiOperation(value = "获取用户名片", notes = "accids传入多个用户名按照逗号分隔")
     //apple,helloworld
     @CheckToken
     @PostMapping("/get_uinfos")
@@ -145,7 +149,8 @@ public class IMController {
 
     }
 
-    //更新用户名片
+
+    @ApiOperation(value = "更新用户名片", notes = "accid 用户名 name 昵称")
     //accid:apple
     //name:老王
     @CheckToken
@@ -171,7 +176,8 @@ public class IMController {
     }
 
 
-    //加好友
+
+    @ApiOperation(value = "加好友", notes = "accid 用户名 faccid 好友用户名 type 类型默认为1")
     //accid:apple
     //faccid:helloworld
     //type:1
@@ -198,7 +204,8 @@ public class IMController {
         }
     }
 
-    //获取好友关系
+
+    @ApiOperation(value = "获取好友关系", notes = "accid 用户名 createtime 时间戳")
     //accid:apple
     //createtime:1443599631111
     @CheckToken
@@ -224,7 +231,8 @@ public class IMController {
     }
 
 
-    //删除好友
+
+    @ApiOperation(value = "删除好友", notes = "accid 用户名 faccid 好友的用户名")
     //accid:apple
     //faccid:helloworld
     @CheckToken
@@ -246,7 +254,8 @@ public class IMController {
     }
 
 
-    //更新好友相关信息(备注名)
+
+    @ApiOperation(value = "更新好友相关信息(备注名)", notes = "accid 用户名 faccid 好友的用户名 alias 备注名")
     //accid:apple
     //faccid:helloworld
     //alias:lisi
@@ -270,7 +279,8 @@ public class IMController {
     }
 
 
-    //发送普通消息
+
+    @ApiOperation(value = "发送普通消息", notes = "from 用户名 to 好友的用户名 ope 默认为0 type 默认为0 body 消息的json字符串")
     //{"from":"apple","to":"helloworld","ope":0,"type":0,"body":{"msg":"hello"}}
     @CheckToken
     @PostMapping("/send_msg")
@@ -293,7 +303,8 @@ public class IMController {
         }
     }
 
-    //单聊云端历史消息查询
+
+    @ApiOperation(value = "单聊云端历史消息查询", notes = "from 用户名 to 好友的用户名 begintime 开始时间 endtime 结束时间 limit 查多少条")
     //from:apple
     //to:helloworld
     //begintime:1582685390901
@@ -321,7 +332,8 @@ public class IMController {
     }
 
 
-    //文件上传
+
+    @ApiOperation(value = "文件上传", notes = "图片必须是jpg、jpeg、png、bmp、gif格式")
     //img:选择图片
     //http://nim-nosdn.netease.im/MTY3Nzk0ODA=/bmltd18wXzE1ODI2ODk2MDcxNDNfZTg0OWIwNWEtMTA1Ni00NTU0LWE4YjAtMTljNGFiMDc1YTFh
     @CheckToken
@@ -383,7 +395,8 @@ public class IMController {
 
 
 
-    //消息撤回
+
+    @ApiOperation(value = "消息撤回", notes = "from 用户名 to 好友的用户名 deleteMsgid 消息id timetag 时间戳 type 默认为7 msg 备注")
     //from:apple
     //to:helloworld
     //deleteMsgid:359980429841

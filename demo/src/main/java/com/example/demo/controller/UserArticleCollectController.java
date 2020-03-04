@@ -9,6 +9,8 @@ import com.example.demo.model.UserArticle;
 import com.example.demo.model.UserArticleCollect;
 import com.example.demo.service.UserArticleService;
 import com.example.demo.service.UserArticleCollectService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,6 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
+
+@Api(value = "/user_article_collect", tags = "用户文章收藏")
 @Slf4j
 @RestController
 @RequestMapping("/user_article_collect")
@@ -36,7 +40,8 @@ public class UserArticleCollectController {
     @Autowired
     HttpServletRequest request;
 
-    //添加文章收藏
+
+    @ApiOperation(value = "添加文章收藏", notes = "传入要收藏的文章id")
     @CheckToken
     @PostMapping("/create_user_article_collect")
     public ResultBody createUserArticleCollect( @RequestParam Integer aid) {
@@ -60,7 +65,8 @@ public class UserArticleCollectController {
         return ResultBody.success(saved) ;
     }
 
-    //取消文章收藏
+
+    @ApiOperation(value = "取消文章收藏", notes = "传入要要取消收藏的文章id")
     @CheckToken
     @PostMapping("/remove_user_article_collect")
     public ResultBody removeUserArticleCollect(@RequestParam Integer aid){
@@ -77,7 +83,8 @@ public class UserArticleCollectController {
         return ResultBody.success("取消收藏成功") ;
     }
 
-    //收藏列表
+
+    @ApiOperation(value = "文章收藏列表", notes = "limit表示每次查几条 page表示第几页")
     @CheckToken
     @PostMapping(value = "/all_user_article_collect",params = "limit")
     public ResultBody allUserArticleCollect(Integer limit,Integer page){
