@@ -68,26 +68,32 @@ insert into hd_user_address (userid, realname,mobile,province,city,area,address,
 insert into hd_user_address (userid, realname,mobile,province,city,area,address, createtime) values (1,'陈东谱', 15057190648,'湖北省','武穴市','余川镇','龟山村3组47号', now());
 insert into hd_user_address (userid, realname,mobile,province,city,area,address, createtime) values (1,'陈东谱', 15057190649,'湖北省','武穴市','余川镇','龟山村3组47号', now());
 
-insert into hd_user_article (userid,title, img, content,createtime,readnum,likenum) values (1,'武汉,加油', 'http://','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),1,1);
-insert into hd_user_article (userid,title, img, content,createtime,author,keyword,state) values (1,'武汉,加油01', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
-insert into hd_user_article (userid,title, img, content,createtime,author,keyword,state) values (1,'武汉,加油02', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
-insert into hd_user_article (userid,title, img, content,createtime,author,keyword,state) values (1,'武汉,加油03', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
-insert into hd_user_article (userid,title, img, content,createtime,author,keyword,state) values (1,'武汉,加油04', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
-insert into hd_user_article (userid,title, img, content,createtime,author,keyword,state) values (1,'武汉,加油05', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
-insert into hd_user_article (userid,title, img, content,createtime,author,keyword,state) values (1,'武汉,加油06', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
-insert into hd_user_article (userid,title, img, content,createtime,author,keyword,state) values (1,'武汉,加油07', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
-insert into hd_user_article (userid,title, img, content,createtime,author,keyword,state) values (1,'武汉,加油08', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
-insert into hd_user_article (userid,title, img, content,createtime,author,keyword,state) values (1,'武汉,加油09', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
-insert into hd_user_article (userid,title,type, img, content,createtime,author,keyword,state) values (1,'野生动物',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
-insert into hd_user_article (userid,title,type, img, content,createtime,author,keyword,state) values (1,'野生动物01',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
-insert into hd_user_article (userid,title,type, img, content,createtime,author,keyword,state) values (1,'野生动物02',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
-insert into hd_user_article (userid,title,type, img, content,createtime,author,keyword,state) values (1,'野生动物03',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
-insert into hd_user_article (userid,title,type, img, content,createtime,author,keyword,state) values (1,'野生动物04',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
-insert into hd_user_article (userid,title,type, img, content,createtime,author,keyword,state) values (1,'野生动物05',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
-insert into hd_user_article (userid,title,type, img, content,createtime,author,keyword,state) values (1,'野生动物06',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
-insert into hd_user_article (userid,title,type, img, content,createtime,author,keyword,state) values (1,'野生动物07',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
-insert into hd_user_article (userid,title,type, img, content,createtime,author,keyword,state) values (1,'野生动物08',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
-insert into hd_user_article (userid,title,type, img, content,createtime,author,keyword,state) values (1,'野生动物09',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
+insert into hd_article_category (title,createtime) values ('饮食健康',now());
+insert into hd_article_category (title,createtime) values ('两性健康',now());
+insert into hd_article_category (title,createtime) values ('孕产育儿',now());
+insert into hd_article_category (title,createtime) values ('常见疾病',now());
+
+
+insert into hd_user_article (userid,categoryid,title, img, content,createtime,readnum,likenum) values (1,1,'武汉,加油', 'http://','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),1,1);
+insert into hd_user_article (userid,categoryid,title, img, content,createtime,author,keyword,state) values (1,1,'武汉,加油01', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,categoryid,title, img, content,createtime,author,keyword,state) values (1,1,'武汉,加油02', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,categoryid,title, img, content,createtime,author,keyword,state) values (1,1,'武汉,加油03', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,categoryid,title, img, content,createtime,author,keyword,state) values (1,1,'武汉,加油04', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,categoryid,title, img, content,createtime,author,keyword,state) values (1,1,'武汉,加油05', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,categoryid,title, img, content,createtime,author,keyword,state) values (1,1,'武汉,加油06', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,categoryid,title, img, content,createtime,author,keyword,state) values (1,1,'武汉,加油07', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,categoryid,title, img, content,createtime,author,keyword,state) values (1,1,'武汉,加油08', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,categoryid,title, img, content,createtime,author,keyword,state) values (1,1,'武汉,加油09', '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,categoryid,title,type, img, content,createtime,author,keyword,state) values (1,1,'野生动物',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,categoryid,title,type, img, content,createtime,author,keyword,state) values (1,1,'野生动物01',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,categoryid,title,type, img, content,createtime,author,keyword,state) values (1,1,'野生动物02',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,categoryid,title,type, img, content,createtime,author,keyword,state) values (1,1,'野生动物03',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,categoryid,title,type, img, content,createtime,author,keyword,state) values (1,1,'野生动物04',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,categoryid,title,type, img, content,createtime,author,keyword,state) values (1,1,'野生动物05',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,categoryid,title,type, img, content,createtime,author,keyword,state) values (1,1,'野生动物06',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,categoryid,title,type, img, content,createtime,author,keyword,state) values (1,1,'野生动物07',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,categoryid,title,type, img, content,createtime,author,keyword,state) values (1,1,'野生动物08',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
+insert into hd_user_article (userid,categoryid,title,type, img, content,createtime,author,keyword,state) values (1,1,'野生动物09',1, '/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg','/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv',now(),'陈东谱','武汉',1);
 
 insert into hd_user_article_read (userid,aid) values (1,1);
 insert into hd_user_article_read (userid,aid) values (1,2);

@@ -18,6 +18,9 @@ public class NewUserArticleRequest {
     private String title;
 
     @NotNull
+    private Integer categoryid;
+
+    @NotNull
     private Integer type;
 
     @NotEmpty

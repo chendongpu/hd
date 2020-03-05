@@ -96,10 +96,21 @@ CREATE TABLE `hd_user_address` (
   KEY `idx_deleted` (`deleted`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8  COMMENT='用户地址';
 
+
+DROP TABLE IF EXISTS `hd_article_category`;
+CREATE TABLE `hd_article_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL DEFAULT '' COMMENT '类别标题',
+  `createtime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_title` (`title`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章类别';
+
 DROP TABLE IF EXISTS `hd_user_article`;
 CREATE TABLE `hd_user_article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` varchar(255) NOT NULL DEFAULT '' COMMENT '用户id',
+  `categoryid` varchar(255) NOT NULL DEFAULT '' COMMENT '分类id',
   `type` tinyint(1) DEFAULT '0' COMMENT '文章类型 0文章 1视频',
   `title` varchar(255) NOT NULL DEFAULT '' COMMENT '文章标题',
   `img` text NOT NULL COMMENT '文章图片',

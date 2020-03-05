@@ -40,8 +40,8 @@ public class UserArticleController {
     HttpServletRequest request;
 
     @ApiOperation(value = "添加文章", notes = "type 0 文章 1 视频 ")
-    //{"type":0"title":"武汉,加油","img":"/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg","content":"武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！","author":"陈东谱","keyword":"武汉"}
-    //{"type":1"title":"野生动物","img":"/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg","content":"/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv","author":"陈东谱","keyword":"武汉"}
+    //{"categoryid":1,"type":0"title":"武汉,加油","img":"/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg","content":"武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！","author":"陈东谱","keyword":"武汉"}
+    //{"categoryid":1,"type":1"title":"野生动物","img":"/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg","content":"/movupload/4fd6bb372dc8427eb856d2bbd2704a96.wmv","author":"陈东谱","keyword":"武汉"}
     @CheckToken
     @PostMapping("/create_user_article")
     public ResultBody createUserArticle( @Valid @RequestBody NewUserArticleRequest newUserArticleReq) {
@@ -59,6 +59,7 @@ public class UserArticleController {
         Long userid =Long.parseLong(userId);
         newUserArticle.setUserid(userid);
         newUserArticle.setTitle(newUserArticleReq.getTitle());
+        newUserArticle.setCategoryid(newUserArticleReq.getCategoryid());
         newUserArticle.setType(newUserArticleReq.getType());
         newUserArticle.setImg(newUserArticleReq.getImg());
         newUserArticle.setContent(newUserArticleReq.getContent());
@@ -87,7 +88,7 @@ public class UserArticleController {
 
 
     @ApiOperation(value = "修改文章", notes = "修改文章标题、图片、内容、作者、关键字 ")
-    //{"title":"武汉,加油,中国加油","img":"/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg","content":"武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！","author":"陈东谱","keyword":"武汉","id":9}
+    //{"categoryid":1,"title":"武汉,加油,中国加油","img":"/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg","content":"武汉一定要挺住，向白衣天使致敬，你们辛苦了，熬过这个艰难的时刻，武汉加油！","author":"陈东谱","keyword":"武汉","id":9}
     @CheckToken
     @PostMapping(value = "/update_user_article")
     public ResultBody updateUserArticle(@Valid @RequestBody NewUserArticleRequest newUserArticleReq){
@@ -102,6 +103,7 @@ public class UserArticleController {
         }
 
         UserArticle userArticleBase = userArticleOption.get();
+        userArticleBase.setCategoryid(newUserArticleReq.getCategoryid());
         userArticleBase.setTitle(newUserArticleReq.getTitle());
         userArticleBase.setImg(newUserArticleReq.getImg());
         userArticleBase.setContent(newUserArticleReq.getContent());

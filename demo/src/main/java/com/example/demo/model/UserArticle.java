@@ -24,6 +24,7 @@ public class UserArticle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long userid;
+    private Integer categoryid;
     private Integer type;
     private String title;
     private String img;

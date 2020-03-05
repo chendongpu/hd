@@ -94,7 +94,7 @@ public class DoctorDepartmentController {
 
 
     @ApiOperation(value = "修改医生科室", notes = "newDoctorDepartmentReq 为科室的标题和图片以及要修改的科室id的json")
-    //{"title":"儿童科","img":"/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg"}
+    //{"title":"儿童科","img":"/imgupload/d8744c4f60894af59ee233c4aaccba4e.jpg","id":1}
     @CheckToken
     @PostMapping(value = "/update_doctor_department")
     public ResultBody updateDoctorDepartment(@Valid @RequestBody NewDoctorDepartmentRequest newDoctorDepartmentReq){
