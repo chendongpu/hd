@@ -1,11 +1,12 @@
 package com.example.back.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.auth0.jwt.JWT;
 import com.example.back.controller.request.NewUserArticleRequest;
+import com.example.back.controller.response.ArticleResponse;
 import com.example.back.handler.BizException;
 import com.example.back.handler.ResultBody;
 import com.example.back.jwt.CheckToken;
+import com.example.back.model.User;
 import com.example.back.model.UserArticle;
 import com.example.back.service.UserArticleService;
 import com.example.back.service.UserService;
@@ -17,10 +18,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Api(value = "/article", tags = "用户文章")
@@ -81,7 +85,7 @@ public class ArticleController {
         return ResultBody.success("文章修改成功");
     }
 
-    @ApiOperation(value = "查询个人文章", notes = "limit表示每次查几条 page表示第几页")
+    @ApiOperation(value = "查询所有文章", notes = "limit表示每次查几条 page表示第几页")
     @CheckToken
     @PostMapping(value = "/all_article",params = "limit")
     public ResultBody allArticle(Integer limit,Integer page){
@@ -100,6 +104,59 @@ public class ArticleController {
         return ResultBody.success(jsonObject);
 
     }
+
+    @ApiOperation(value = "根据关键字查询所有文章", notes = "limit表示每次查几条 page表示第几页keyword表示关键字")
+    @CheckToken
+    @PostMapping(value = "/find_article",params = "limit")
+    public ResultBody findArticle(Integer limit,Integer page,@Nullable String keyword){
+
+        if (null == page || 0 == page){
+            page = 1;
+        }
+        // 排序方式，这里是以“id”为标准进行降序
+        Sort sort = Sort.by(Sort.Direction.DESC, "id");  // 这里的"id"是实体类的主键，记住一定要是实体类的属性，而不能是数据库的字段
+        Pageable pageable = PageRequest.of(page - 1,limit,sort);
+
+
+        UserArticle article = UserArticle.builder().build();
+        JSONObject jsonObject = new JSONObject();
+
+        Page<UserArticle> pageArticle;
+
+        if(null!=keyword && !"".equals(keyword)){
+            pageArticle = userArticleService.findByKeyword(keyword,pageable);
+        }else{
+            pageArticle = userArticleService.allUserArticle(article,pageable);
+        }
+
+
+
+        List<ArticleResponse> articleResponseList =new ArrayList<>();
+
+        List<UserArticle> articleList = pageArticle.getContent();
+
+        for(UserArticle userArticle:articleList){
+
+            Optional<User> userOptional = userService.findUserById(userArticle.getUserid());
+
+            User user = userOptional.get();
+
+            ArticleResponse articleResponse=new ArticleResponse();
+
+            articleResponse.setArticleUser(user);
+
+            articleResponse.setUserArticle(userArticle);
+
+            articleResponseList.add(articleResponse);
+        }
+
+        jsonObject.put("list", articleResponseList);
+        return ResultBody.success(jsonObject);
+
+    }
+
+
+
 
     @ApiOperation(value = "查询文章详情", notes = "传入文章id")
     @CheckToken

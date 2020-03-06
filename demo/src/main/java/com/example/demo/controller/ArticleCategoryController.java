@@ -16,7 +16,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 
-@Api(value = "/article_category", tags = "后台文章分类接口")
+@Api(value = "/article_category", tags = "文章分类接口")
 @Slf4j
 @RestController
 @RequestMapping("/article_category")
