@@ -6,6 +6,7 @@ import com.example.back.handler.ResultBody;
 import com.example.back.jwt.CheckToken;
 import com.example.back.model.*;
 import com.example.back.service.*;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
+@Api(value = "/user_test_log", tags = "用户测评记录接口")
 @Slf4j
 @RestController
 @RequestMapping("/user_test_log")

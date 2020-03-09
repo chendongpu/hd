@@ -16,6 +16,7 @@ import com.example.back.model.UserTestReport;
 import com.example.back.service.UserService;
 import com.example.back.service.UserTestReportService;
 import com.example.back.service.UserTestService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Api(value = "/user_test_report", tags = "用户测评报告接口")
 @Slf4j
 @RestController
 @RequestMapping("/user_test_report")
